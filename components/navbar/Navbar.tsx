@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { Input } from "../ui/input";
+import { ModeToggle } from "../ui/modeToggle";
 
-export function MainNav({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) {
+const Navbar = () => {
   return (
-    <div className='flex py-6 px-52 sticky top-0 border-b backdrop-blur-md'>
-      <nav className='flex space-x-4 lg:space-x-6'>
+    <div className='flex py-6 px-52 sticky top-0 border-b backdrop-blur-md align-middle gap-4'>
+      <nav className='flex space-x-4 lg:space-x-6 items-center'>
         <Link
           href='/examples/dashboard'
           className='text-lg font-extrabold transition-colors hover:text-primary'
@@ -36,6 +34,9 @@ export function MainNav({
       <div className='ml-auto'>
         <Input type='text' placeholder='Szukaj...' />
       </div>
+      <ModeToggle />
     </div>
   );
-}
+};
+
+export default Navbar;
