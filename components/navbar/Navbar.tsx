@@ -1,40 +1,41 @@
 import Link from "next/link";
-
-import { cn } from "@/lib/utils";
+import { Input } from "../ui/input";
 
 export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
-      {...props}
-    >
-      <Link
-        href='/examples/dashboard'
-        className='text-sm font-medium transition-colors hover:text-primary'
-      >
-        Overview
-      </Link>
-      <Link
-        href='/examples/dashboard'
-        className='text-sm font-medium text-muted-foreground transition-colors hover:text-primary'
-      >
-        Customers
-      </Link>
-      <Link
-        href='/examples/dashboard'
-        className='text-sm font-medium text-muted-foreground transition-colors hover:text-primary'
-      >
-        Products
-      </Link>
-      <Link
-        href='/examples/dashboard'
-        className='text-sm font-medium text-muted-foreground transition-colors hover:text-primary'
-      >
-        Settings
-      </Link>
-    </nav>
+    <div className='flex py-6 px-52 sticky top-0 border-b backdrop-blur-md'>
+      <nav className='flex space-x-4 lg:space-x-6'>
+        <Link
+          href='/examples/dashboard'
+          className='text-lg font-extrabold transition-colors hover:text-primary'
+        >
+          WRS WEEIA
+        </Link>
+        <Link
+          href='/examples/dashboard'
+          className='text-lg font-medium transition-colors hover:text-primary'
+        >
+          Dla studentów
+        </Link>
+        <Link
+          href='/examples/dashboard'
+          className='text-lg font-medium text-muted-foreground transition-colors hover:text-primary'
+        >
+          O nas
+        </Link>
+        <Link
+          href='/examples/dashboard'
+          className='text-lg font-medium text-muted-foreground transition-colors hover:text-primary'
+        >
+          Nasze wydarzenia
+        </Link>
+      </nav>
+      <div className='ml-auto'>
+        <Input type='text' placeholder='Szukaj...' />
+      </div>
+    </div>
   );
 }
