@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowUpRight } from 'lucide-react';
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -73,7 +73,10 @@ export default function Home() {
           </Card>
         </div>
       </section>
-      <section id='about' className='py-12 flex flex-col bg-gradient-to-r from-purple-500 to-pink-500 gap-6 my-24 border-y'>
+      <section
+        id='about'
+        className='py-12 flex flex-col bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 bg-[size:200%] gap-6 my-24 border-y animate-background-pulse'
+      >
         <div className='flex flex-col items-center gap-6 px-52 text-background dark:text-foreground'>
           <p className='text-4xl font-semibold'>Kim tak właściwie jesteśmy?</p>
           <p className='text-lg text-center w-1/2'>
@@ -88,6 +91,69 @@ export default function Home() {
               Dowiedz się więcej o nas 📖
             </Button>
           </Link>
+        </div>
+      </section>
+      <section id='available-hours' className='py-12'>
+        <div className='px-52'>
+          <p className='text-2xl font-semibold leading-none tracking-tight'>Plan dyżurów</p>
+          <p className='text-sm text-muted-foreground pb-4'>Jesteśmy na 1 piętrze przy zamkniętym bufecie</p>
+          <Table>
+            <TableCaption>Plan dyżurów Wydziałowej Rady Samorządu</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className='w-[12.5%]'>Godziny</TableHead>
+                <TableHead className='w-[12.5%]'>Poniedziałek</TableHead>
+                <TableHead className='w-[12.5%]'>Wtorek</TableHead>
+                <TableHead className='w-[12.5%]'>Środa</TableHead>
+                <TableHead className='w-[12.5%]'>Czwartek</TableHead>
+                <TableHead className='w-[12.5%]'>Piątek</TableHead>
+                <TableHead className='w-[12.5%]'>Sobota</TableHead>
+                <TableHead className='w-[12.5%]'>Niedziela</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell className='w-[12.5%]'>8:00 - 9:00</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className='w-[12.5%]'>9:00 - 10:00</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className='w-[12.5%]'>10:00 - 11:00</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className='w-[12.5%]'>11:00 - 12:00</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🟢</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+                <TableCell className='w-[12.5%]'>🔴</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </div>
       </section>
     </main>

@@ -9,7 +9,7 @@ const Navbar = () => {
         <Link href='/' className='text-lg font-extrabold transition-colors hover:text-primary'>
           WRS WEEIA
         </Link>
-        <Link href='/info' className='text-lg font-medium transition-colors hover:text-primary'>
+        <Link href='/info' className='text-lg font-medium text-muted-foreground transition-colors hover:text-primary'>
           Dla studentów
         </Link>
         <Link href='/about-us' className='text-lg font-medium text-muted-foreground transition-colors hover:text-primary'>
