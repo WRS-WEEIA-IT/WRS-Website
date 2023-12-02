@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Input } from '../ui/input';
 import { ModeToggle } from '../ui/modeToggle';
+import SearchBar from '../search-bar/SearchBar';
+import { Button } from '../ui/button';
 
 const Navbar = () => {
   return (
@@ -20,7 +22,7 @@ const Navbar = () => {
         </Link>
       </nav>
       <div className='ml-auto'>
-        <Input type='text' placeholder='Szukaj...' />
+        <SearchBar />
       </div>
       <ModeToggle />
     </div>
