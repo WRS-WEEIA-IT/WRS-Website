@@ -16,7 +16,7 @@ import { Button } from '../ui/button';
 
 const SearchBar = () => {
   const [open, setOpen] = useState(false);
-  const isMacintosh = navigator.platform.indexOf('Mac') != -1 ? true : false;
+  const [osButtonText, setOsButtonText] = useState<'⌘' | 'CTRL +' | ''>('');
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -30,12 +30,17 @@ const SearchBar = () => {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
-  const buttonText = isMacintosh ? (
+  useEffect(() => {
+    if (navigator) {
+      const isMac = navigator.platform.indexOf('Mac') != -1 ? '⌘' : 'CTRL +';
+      setOsButtonText(isMac);
+    }
+  }, []);
+
+  const buttonText = (
     <>
-      <span className='text-xs'>⌘</span>K
+      <span className=''>{osButtonText} K</span>
     </>
-  ) : (
-    'CTRL + K'
   );
 
   return (
