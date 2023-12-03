@@ -60,7 +60,7 @@
 
 @layer base {
   .site-container {
-    @apply px-14 md:px-20 lg:px-32 xl:px-52;
+    @apply px-8 md:px-20 lg:px-32 xl:px-52;
   }
 
   .card-hover {

@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-const NewsSection = async () => {
+const NewsSection = () => {
   return (
     <section id='news' className='pt-12 flex flex-col gap-6 site-container'>
       <div>
@@ -16,7 +16,7 @@ const NewsSection = async () => {
           <NewsFeed />
         </Suspense>
         <Card className='items-center justify-center inline-flex card-hover'>
-          <Link href='/' className='whitespace-nowrap xl:rotate-90'>
+          <Link href='/' className='whitespace-nowrap xl:rotate-90 p-10 md:p-0'>
             Zobacz wszystko
           </Link>
         </Card>

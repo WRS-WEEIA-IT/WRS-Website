@@ -11,7 +11,7 @@ export default function Home() {
       <Suspense>
         <NewsSection />
       </Suspense>
-      {/* <AboutSection /> */}
+      <AboutSection />
       {/* <DutiesSection /> */}
     </main>
   );
