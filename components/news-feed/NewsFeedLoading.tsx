@@ -6,7 +6,7 @@ const NewsFeedLoading = () => {
   return (
     <>
       {[0, 0, 0].map((news, index) => (
-        <Card key={index} className='w-1/3 hover:border-primary hover:drop-shadow-[0_0_15px_rgba(67,133,243,0.2)] duration-200'>
+        <Card key={index} className='w-full hover:border-primary hover:drop-shadow-[0_0_15px_rgba(67,133,243,0.2)] duration-200'>
           <CardHeader>
             <div className='flex justify-between animate-pulse'>
               <CardTitle className='animate-pulse bg-secondary rounded-sm'>
@@ -21,7 +21,7 @@ const NewsFeedLoading = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className='animate-pulse'>
-            <div className='w-full h-60 bg-secondary rounded-lg' />
+            <div className='w-full aspect-video bg-secondary rounded-lg' />
           </CardContent>
           <CardFooter className='flex justify-between items-end'>
             <Button variant='default' className='flex-1'>

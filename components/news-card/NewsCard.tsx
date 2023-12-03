@@ -7,18 +7,20 @@ import format from 'date-fns/format';
 
 const NewsCard = ({ news }: { news: News }) => {
   return (
-    <Card className='w-1/3 hover:border-primary hover:drop-shadow-[0_0_15px_rgba(67,133,243,0.2)] duration-200'>
-      <CardHeader>
+    <Card className='w-full card-hover  relative'>
+      <CardHeader className=' max-h-36'>
         <div className='flex justify-between'>
-          <CardTitle>{news.title}</CardTitle>
-          <Badge variant='outline'>{format(news.date, 'dd.MM.yyyy')}</Badge>
+          <CardTitle className='text-base md:text-lg lg:text-2xl'>{news.title}</CardTitle>
+          <Badge variant='outline' className='h-min'>
+            {format(news.date, 'dd.MM.yyyy')}
+          </Badge>
         </div>
-        <CardDescription>{news.description}</CardDescription>
+        <CardDescription className='text-xs md:text-sm'>{news.description}</CardDescription>
       </CardHeader>
-      <CardContent>
-        <Image src={news.imageUrl} width={500} height={300} alt={news.title} className='min-h-[250px] object-cover rounded-lg' />
+      <CardContent className=' mb-16'>
+        <Image src={news.imageUrl} width={300} height={300} alt={news.title} className='aspect-video object-cover rounded-lg w-full' />
       </CardContent>
-      <CardFooter className='flex justify-between items-end'>
+      <CardFooter className=' absolute bottom-0 w-full'>
         <Button variant='default' className='flex-1'>
           Zobacz więcej
         </Button>
