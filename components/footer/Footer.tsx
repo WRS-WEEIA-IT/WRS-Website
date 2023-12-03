@@ -2,7 +2,7 @@ import { Facebook, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className='footer px-52 py-12 border-t flex flex-col gap-4'>
+    <footer className='footer site-container py-12 border-t flex flex-col gap-4'>
       <div className='flex gap-4 text-muted-foreground'>
         <Mail />
         <p>eeia@samorzad.p.lodz.pl</p>

@@ -6,8 +6,8 @@ import NewsSection from '@/app/[sections]/NewsSection';
 export default function Home() {
   return (
     <main className=''>
-      {/* <LandingSection />
-      <NewsSection />
+      <LandingSection />
+      {/* <NewsSection />
       <AboutSection />
       <DutiesSection /> */}
     </main>

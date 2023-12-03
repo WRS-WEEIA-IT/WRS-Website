@@ -4,7 +4,7 @@ import SearchBar from '../search-bar/SearchBar';
 
 const Navbar = () => {
   return (
-    <div className='flex py-6 px-14 md:px-20 lg:px-32 xl:px-52 sticky top-0 border-b backdrop-blur-md align-middle gap-4 z-30'>
+    <div className='flex py-6 site-container sticky top-0 border-b backdrop-blur-md align-middle gap-4 z-30'>
       <nav className='flex gap-4 lg:gap-6 items-center whitespace-nowrap text-sm md:text-sm lg:text-base'>
         <Link href='/' className='font-extrabold transition-colors hover:text-primary'>
           WRS WEEIA
