@@ -6,10 +6,10 @@ import NewsSection from '@/app/[sections]/NewsSection';
 export default function Home() {
   return (
     <main className=''>
-      <LandingSection />
+      {/* <LandingSection />
       <NewsSection />
       <AboutSection />
-      <DutiesSection />
+      <DutiesSection /> */}
     </main>
   );
 }

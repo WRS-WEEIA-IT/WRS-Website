@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -45,13 +44,11 @@ const SearchBar = () => {
 
   return (
     <>
-      <Button variant='outline' className='text-muted-foreground flex flex-row gap-20' onClick={() => setOpen(true)}>
+      <Button variant='outline' className='text-muted-foreground flex flex-row gap-4 md:gap-8 lg:gap-12' onClick={() => setOpen(true)}>
         Szukaj...
-        <p>
-          <kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100'>
-            {buttonText}
-          </kbd>
-        </p>
+        <kbd className='hidden md:inline-flex whitespace-nowrap pointer-events-none h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100'>
+          {buttonText}
+        </kbd>
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder='Type a command or search...' />
