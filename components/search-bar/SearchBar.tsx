@@ -16,6 +16,7 @@ import { Button } from '../ui/button';
 
 const SearchBar = () => {
   const [open, setOpen] = useState(false);
+  const isMacintosh = navigator.platform.indexOf('Mac') != -1 ? true : false;
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -29,13 +30,21 @@ const SearchBar = () => {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
+  const buttonText = isMacintosh ? (
+    <>
+      <span className='text-xs'>⌘</span>K
+    </>
+  ) : (
+    'CTRL + K'
+  );
+
   return (
     <>
       <Button variant='outline' className='text-muted-foreground flex flex-row gap-20' onClick={() => setOpen(true)}>
         Szukaj...
         <p>
           <kbd className='pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100'>
-            <span className='text-xs'>⌘</span>K
+            {buttonText}
           </kbd>
         </p>
       </Button>
