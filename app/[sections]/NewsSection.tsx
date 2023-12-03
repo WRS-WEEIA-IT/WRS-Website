@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 
 const NewsSection = () => {
   return (
-    <section id='news' className='pt-12 flex flex-col gap-6 site-container'>
+    <section id='news' className='flex flex-col gap-6 site-container'>
       <div>
         <p className='text-2xl font-semibold leading-none tracking-tight'>Aktualności</p>
         <p className='text-sm text-muted-foreground'>Bądź na bieżąco!</p>

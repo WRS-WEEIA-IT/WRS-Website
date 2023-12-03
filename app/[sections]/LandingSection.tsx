@@ -1,6 +1,6 @@
 const LandingSection = () => {
   return (
-    <section id='landing-text' className='flex flex-col items-center justify-between gap-6 py-24 site-container text-center'>
+    <section id='landing-text' className='flex flex-col items-center justify-between gap-6 py-12 lg:py-24 site-container text-center'>
       <p className='text-3xl md:text-4xl lg:text-5xl xl:text-5xl'>Połączeni studiowaniem.</p>
       <p className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
         <span className='hidden md:inline-block'>💪 </span>
