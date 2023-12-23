@@ -7,7 +7,7 @@ import format from 'date-fns/format';
 
 const NewsCard = ({ news }: { news: News }) => {
     return (
-        <Card className='w-full card-hover  relative'>
+        <Card className='w-full card-hover relative'>
             <CardHeader className=' max-h-36'>
                 <div className='flex justify-between'>
                     <CardTitle className='text-base md:text-lg lg:text-2xl'>{news.title}</CardTitle>
