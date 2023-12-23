@@ -5,14 +5,14 @@ import NewsSection from '@/app/[sections]/NewsSection';
 import { Suspense } from 'react';
 
 export default function Home() {
-  return (
-    <main className=''>
-      <LandingSection />
-      <Suspense>
-        <NewsSection />
-      </Suspense>
-      <AboutSection />
-      {/* <DutiesSection /> */}
-    </main>
-  );
+    return (
+        <main className=''>
+            <LandingSection />
+            <Suspense>
+                <NewsSection />
+            </Suspense>
+            <AboutSection />
+            <DutiesSection />
+        </main>
+    );
 }
