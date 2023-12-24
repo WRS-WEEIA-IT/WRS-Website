@@ -5,4 +5,5 @@ export default interface InfoCardConfig {
     color: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'pink' | 'orange' | 'magenta' | 'cyan' | 'teal';
     description: string;
     Icon: LucideIcon;
+    link: string;
 }
