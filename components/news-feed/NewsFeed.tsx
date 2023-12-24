@@ -1,4 +1,4 @@
-import News from '@/utils/interfaces/News';
+import News from '@/lib/interfaces/News';
 import NewsCard from '../news-card/NewsCard';
 
 const NewsFeed = async () => {

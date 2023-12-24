@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import News from '@/utils/interfaces/News';
+import News from '@/lib/interfaces/News';
 import format from 'date-fns/format';
 
 const NewsCard = ({ news }: { news: News }) => {
