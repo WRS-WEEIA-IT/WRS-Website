@@ -4,7 +4,7 @@ import { Book, CalendarCheck, DoorOpen, GraduationCap, Lightbulb, ShipWheel } fr
 const InfoSection = () => {
     return (
         <div className='site-container py-12'>
-            <div className=' grid grid-cols-3 gap-4 grid-flow-dense'>
+            <div className='grid grid-cols-2 md:grid-cols-3 gap-4 grid-flow-dense'>
                 <InfoCard
                     title='Savoir vivre'
                     description='Savoir vivre studenta, czyli jak zwracać się do władz uczelni'

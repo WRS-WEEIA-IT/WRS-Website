@@ -68,10 +68,10 @@ const InfoCard = ({ title, description, color, Icon }: InfoCardConfig) => {
     return (
         <Card className={`${colorVariants[color].border} ${colorVariants[color].dropShadow}`}>
             <CardHeader>
-                <CardTitle className='text-center'>{title}</CardTitle>
+                <CardTitle className='text-center text-base md:text-lg lg:text-2x'>{title}</CardTitle>
             </CardHeader>
             <CardContent>
-                <CardDescription className='text-center'>{description}</CardDescription>
+                <CardDescription className='text-center text-xs md:text-sm'>{description}</CardDescription>
             </CardContent>
             <CardFooter className='flex items-center justify-center'>
                 <div className='flex items-center justify-center'>
