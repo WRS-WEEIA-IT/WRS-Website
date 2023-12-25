@@ -1,8 +1,8 @@
-import InfoCardConfig from '@/lib/interfaces/InfoCardConfig';
+import InfoCardRoute from '@/lib/interfaces/InfoCardRoute';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
 
-const InfoCard = ({ title, description, color, Icon, link }: InfoCardConfig) => {
+const InfoCard = ({ title, description, color, Icon, path }: InfoCardRoute) => {
     const colorVariants = {
         blue: {
             bg: 'bg-blue-500',
@@ -67,7 +67,7 @@ const InfoCard = ({ title, description, color, Icon, link }: InfoCardConfig) => 
     };
 
     return (
-        <Link href={link}>
+        <Link href={path}>
             <Card className={`${colorVariants[color].border} ${colorVariants[color].dropShadow}`}>
                 <CardHeader>
                     <CardTitle className='text-center text-base md:text-lg lg:text-2x'>{title}</CardTitle>

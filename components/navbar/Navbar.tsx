@@ -4,28 +4,14 @@ import Link from 'next/link';
 import { ModeToggle } from '../ui/modeToggle';
 import SearchBar from '../search-bar/SearchBar';
 import { usePathname } from 'next/navigation';
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { Separator } from '../ui/separator';
 import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
+import { navbarRoutes } from '@/lib/routes/routes';
 
 const Navbar = () => {
-    const routes = [
-        {
-            name: 'Dla studentów',
-            path: '/info',
-        },
-        {
-            name: 'O nas',
-            path: '/about-us',
-        },
-        {
-            name: 'Nasze wydarzenia',
-            path: '/events',
-        },
-    ];
-
     const currentPath = usePathname();
     const [currentWidth, setCurrentWidth] = useState(1000);
     const mdWidth = 768;
@@ -45,7 +31,7 @@ const Navbar = () => {
                 </Link>
                 {currentWidth >= mdWidth && (
                     <div className='hidden md:flex md:gap-4 lg:gap-6 '>
-                        {routes.map((route) => (
+                        {navbarRoutes.map((route) => (
                             <Link
                                 key={route.path}
                                 href={route.path}
@@ -53,7 +39,7 @@ const Navbar = () => {
                                     currentPath === route.path ? 'text-primary' : ''
                                 }`}
                             >
-                                {route.name}
+                                {route.title}
                             </Link>
                         ))}
                     </div>
@@ -77,15 +63,15 @@ const Navbar = () => {
                             </SheetHeader>
                             <Separator />
                             <div className='flex flex-col gap-3'>
-                                {routes.map((route) => (
-                                    <SheetClose asChild key={route.name}>
+                                {navbarRoutes.map((route) => (
+                                    <SheetClose asChild key={route.title}>
                                         <Link
                                             href={route.path}
                                             className={`font-medium text-muted-foreground transition-colors text-hover ${
                                                 currentPath === route.path ? 'text-primary' : ''
                                             }`}
                                         >
-                                            {route.name}
+                                            {route.title}
                                         </Link>
                                     </SheetClose>
                                 ))}
