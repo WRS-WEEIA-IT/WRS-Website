@@ -9,10 +9,10 @@ const InfoSection = () => {
                     <InfoCard
                         key={route.path}
                         title={route.title}
+                        path={route.path}
                         description={route.description}
                         color={route.color}
                         Icon={route.Icon}
-                        path={route.path}
                     />
                 ))}
             </div>
