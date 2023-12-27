@@ -4,7 +4,7 @@ import { infoCardRoutes } from '@/lib/routes/routes';
 const InfoSection = () => {
     return (
         <div className='site-container py-12'>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-4 grid-flow-dense'>
+            <div className='grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-max'>
                 {infoCardRoutes.map((route) => (
                     <InfoCard
                         key={route.path}

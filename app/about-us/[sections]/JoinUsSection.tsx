@@ -12,7 +12,7 @@ const JoinUsSection = () => {
                     <p className='flex-1 text-center text-lg md:text-xl col-span-5'>Akcja rekrutacja</p>
                     <Separator orientation='vertical' className='justify-self-center col-span-2' />
                     <p className='flex-1 text-center text-lg md:text-xl col-span-5'>Cotygodniowe spotkania</p>
-                    <Separator className='my-6 col-span-10' />
+                    <Separator className='my-6 col-span-12' />
                     <p className='flex-1 text-center text-sm col-span-5'>
                         Dołącz do nas oficjalnie przez{' '}
                         <HoverLink
