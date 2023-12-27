@@ -68,14 +68,14 @@ const InfoCard = ({ title, description, color, Icon, path }: InfoCardRoute) => {
 
     return (
         <Card className={`${colorVariants[color].border} ${colorVariants[color].dropShadow}`}>
-            <Link href={path}>
+            <Link href={path} className='grid h-full grid-flow-row-dense'>
                 <CardHeader>
                     <CardTitle className='text-center text-base md:text-lg lg:text-2x'>{title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <CardDescription className='text-center text-xs md:text-sm'>{description}</CardDescription>
                 </CardContent>
-                <CardFooter className='flex items-center justify-center'>
+                <CardFooter className='flex items-center justify-center '>
                     <div className='flex items-center justify-center'>
                         <div className={`w-16 h-16 rounded-full ${colorVariants[color].bg} flex items-center justify-center`}>
                             <Icon className='size-10' />
