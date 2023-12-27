@@ -63,7 +63,7 @@ const DutiesSection = () => {
     return (
         <section id='duties' className='py-12'>
             <div className='site-container'>
-                <p className='text-2xl font-semibold leading-none tracking-tight'>Plan dyżurów</p>
+                <p className='text-2xl font-semibold leading-none tracking-tight mb-2'>Plan dyżurów</p>
                 <p className='text-sm text-muted-foreground pb-4'>Jesteśmy na 1 piętrze przy zamkniętym bufecie</p>
                 <Table className='p-0'>
                     <TableCaption>Plan dyżurów Wydziałowej Rady Samorządu</TableCaption>

@@ -8,7 +8,7 @@ const NewsSection = () => {
     return (
         <section id='news' className='flex flex-col gap-6 site-container'>
             <div>
-                <p className='text-2xl font-semibold leading-none tracking-tight'>Aktualności</p>
+                <p className='text-2xl font-semibold leading-none tracking-tight mb-2'>Aktualności</p>
                 <p className='text-sm text-muted-foreground'>Bądź na bieżąco!</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:flex gap-4'>
