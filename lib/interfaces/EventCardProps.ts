@@ -3,6 +3,7 @@ interface EventCardProps {
     description: string[];
     imageUrl: string;
     path: string;
+    buttonColor: string;
 }
 
 export default EventCardProps;

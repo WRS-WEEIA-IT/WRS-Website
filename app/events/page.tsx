@@ -3,7 +3,7 @@ import IntroSection from './[sections]/IntroSection';
 
 const Events = () => {
     return (
-        <div>
+        <div className='site-container md:px-0'>
             <IntroSection />
             <EventsSection />
         </div>
