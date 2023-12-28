@@ -1,4 +1,4 @@
-import InfoCardRoute from '../interfaces/InfoCardRoute';
+import InfoCardProps from '../interfaces/InfoCardProps';
 import Route from '../interfaces/Route';
 import { Book, CalendarCheck, DoorOpen, GraduationCap, Lightbulb, ShipWheel } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export const navbarRoutes: Route[] = [
     },
 ];
 
-export const infoCardRoutes: InfoCardRoute[] = [
+export const infoCardRoutes: InfoCardProps[] = [
     {
         title: 'Savoir vivre',
         description: 'Savoir vivre studenta, czyli jak zwracać się do władz uczelni',

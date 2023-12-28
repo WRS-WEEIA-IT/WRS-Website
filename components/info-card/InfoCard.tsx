@@ -1,8 +1,8 @@
-import InfoCardRoute from '@/lib/interfaces/InfoCardRoute';
+import InfoCardProps from '@/lib/interfaces/InfoCardProps';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
 
-const InfoCard = ({ title, description, color, Icon, path }: InfoCardRoute) => {
+const InfoCard = ({ title, description, color, Icon, path }: InfoCardProps) => {
     const colorVariants = {
         blue: {
             bg: 'bg-blue-500',
