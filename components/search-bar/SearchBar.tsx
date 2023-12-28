@@ -12,8 +12,10 @@ import {
 } from '@/components/ui/command';
 import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
+import SearchBarProps from '@/lib/interfaces/SearchBarProps';
+import Link from 'next/link';
 
-const SearchBar = () => {
+const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     const [open, setOpen] = useState(false);
     const [osButtonText, setOsButtonText] = useState<'⌘' | 'CTRL +' | ''>('');
 
@@ -58,7 +60,21 @@ const SearchBar = () => {
                 <CommandInput placeholder='Type a command or search...' />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    <CommandGroup heading='Suggestions'>
+                    {searchBarCategories.map((category) => (
+                        <>
+                            <CommandGroup key={category.categoryName} heading={category.categoryName}>
+                                {category.categoryItems.map((categoryItem) => (
+                                    <Link href={categoryItem.itemPath} key={categoryItem.itemName} onClick={() => setOpen(false)}>
+                                        <CommandItem className='cursor-pointer'>
+                                            <span>{categoryItem.itemName}</span>
+                                        </CommandItem>
+                                    </Link>
+                                ))}
+                            </CommandGroup>
+                            <CommandSeparator />
+                        </>
+                    ))}
+                    <CommandGroup heading='Pages'>
                         <CommandItem>
                             <span>Calendar</span>
                         </CommandItem>

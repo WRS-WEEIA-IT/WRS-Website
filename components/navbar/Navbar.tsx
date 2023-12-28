@@ -10,8 +10,33 @@ import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import { navbarRoutes } from '@/lib/routes/routes';
+import SearchBarCategory from '@/lib/interfaces/SearchBarCategory';
 
 const Navbar = () => {
+    const searchBarCategories: SearchBarCategory[] = [
+        {
+            categoryName: 'Linki',
+            categoryItems: [
+                {
+                    itemName: 'Strona główna',
+                    itemPath: '/',
+                },
+                {
+                    itemName: 'Dla studentów',
+                    itemPath: '/info',
+                },
+                {
+                    itemName: 'O nas',
+                    itemPath: '/about-us',
+                },
+                {
+                    itemName: 'Wydarzenia',
+                    itemPath: '/events',
+                },
+            ],
+        },
+    ];
+
     const currentPath = usePathname();
     const [currentWidth, setCurrentWidth] = useState(1000);
     const mdWidth = 768;
@@ -46,7 +71,7 @@ const Navbar = () => {
                 )}
             </nav>
             <div className='ml-auto'>
-                <SearchBar />
+                <SearchBar searchBarCategories={searchBarCategories} />
             </div>
             <ModeToggle />
             {currentWidth < mdWidth && (
