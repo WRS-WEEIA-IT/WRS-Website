@@ -1,3 +1,4 @@
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 interface Duty {
@@ -65,35 +66,38 @@ const DutiesSection = () => {
             <div className='site-container'>
                 <p className='text-2xl font-semibold leading-none tracking-tight mb-2'>Plan dyżurów</p>
                 <p className='text-sm text-muted-foreground pb-4'>Jesteśmy na 1 piętrze przy zamkniętym bufecie</p>
-                <Table className='p-0'>
-                    <TableCaption>Plan dyżurów Wydziałowej Rady Samorządu</TableCaption>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead className="w-[12.5%] after:content-['Godz'] md:after:content-['Godziny']" />
-                            <TableHead className="w-[12.5%] after:content-['Pon'] md:after:content-['Poniedziałek']" />
-                            <TableHead className="w-[12.5%] after:content-['Wt'] md:after:content-['Wtorek']" />
-                            <TableHead className="w-[12.5%] after:content-['Śr'] md:after:content-['Środa']" />
-                            <TableHead className="w-[12.5%] after:content-['Cz'] md:after:content-['Czwartek']" />
-                            <TableHead className="w-[12.5%] after:content-['Pt'] md:after:content-['Piątek']" />
-                            <TableHead className="w-[12.5%] after:content-['Sob'] md:after:content-['Sobota']" />
-                            <TableHead className="w-[12.5%] after:content-['Ndz'] md:after:content-['Niedziela']" />
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {duties.map((duty) => (
-                            <TableRow key={duty.timeFrom}>
-                                <TableCell className='w-[12.5%]'>
-                                    {duty.timeFrom} - {duty.timeTo}
-                                </TableCell>
-                                {duty.available.map((available, index) => (
-                                    <TableCell key={index} className='w-[12.5%]'>
-                                        {available ? '🟢' : '🔴'}
-                                    </TableCell>
-                                ))}
+                <ScrollArea>
+                    <Table className='p-0'>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead className="w-[12.5%] after:content-['Godz'] md:after:content-['Godziny']" />
+                                <TableHead className="w-[12.5%] after:content-['Pon'] md:after:content-['Poniedziałek']" />
+                                <TableHead className="w-[12.5%] after:content-['Wt'] md:after:content-['Wtorek']" />
+                                <TableHead className="w-[12.5%] after:content-['Śr'] md:after:content-['Środa']" />
+                                <TableHead className="w-[12.5%] after:content-['Cz'] md:after:content-['Czwartek']" />
+                                <TableHead className="w-[12.5%] after:content-['Pt'] md:after:content-['Piątek']" />
+                                <TableHead className="w-[12.5%] after:content-['Sob'] md:after:content-['Sobota']" />
+                                <TableHead className="w-[12.5%] after:content-['Ndz'] md:after:content-['Niedziela']" />
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {duties.map((duty) => (
+                                <TableRow key={duty.timeFrom}>
+                                    <TableCell className='w-[12.5%] whitespace-nowrap'>
+                                        {duty.timeFrom} - {duty.timeTo}
+                                    </TableCell>
+                                    {duty.available.map((available, index) => (
+                                        <TableCell key={index} className='w-[12.5%]'>
+                                            {available ? '🟢' : '🔴'}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                    <ScrollBar orientation='horizontal' />
+                </ScrollArea>
+                <p className='w-full text-center text-xs md:text-sm mt-2 text-muted-foreground'>Plan dyżurów Wydziałowej Rady Samorządu</p>
             </div>
         </section>
     );
