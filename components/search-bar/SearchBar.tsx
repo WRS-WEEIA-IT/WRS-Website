@@ -39,9 +39,9 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     }, []);
 
     const handleSelect = (selectedSearchItem: string) => {
-        const selectedItemDetails = searchBarCategories.map((category) =>
-            category.categoryItems.find((item) => item.itemName.toLowerCase() === selectedSearchItem),
-        )[0];
+        const selectedItemDetails = searchBarCategories
+            .map((category) => category.categoryItems.find((item) => item.itemName.toLowerCase() === selectedSearchItem))
+            .filter(Boolean)[0];
         if (!selectedItemDetails) return;
         setOpen(false);
         router.push(selectedItemDetails.itemPath);
@@ -70,6 +70,7 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
                             <CommandGroup key={category.categoryName} heading={category.categoryName}>
                                 {category.categoryItems.map((categoryItem) => (
                                     <CommandItem key={categoryItem.itemName} onSelect={handleSelect} className='cursor-pointer'>
+                                        <category.Icon className='mr-3' />
                                         <span>{categoryItem.itemName}</span>
                                     </CommandItem>
                                 ))}

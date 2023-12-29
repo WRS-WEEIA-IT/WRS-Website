@@ -6,16 +6,19 @@ import SearchBar from '../search-bar/SearchBar';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet';
 import { Separator } from '../ui/separator';
-import { Menu } from 'lucide-react';
+import { Calendar, LibraryBig, Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import { navbarRoutes } from '@/lib/routes/routes';
 import SearchBarCategory from '@/lib/interfaces/SearchBarCategory';
+import { Link as LucideLink } from 'lucide-react';
+import { infoCardRoutes } from '@/lib/routes/routes';
 
 const Navbar = () => {
     const searchBarCategories: SearchBarCategory[] = [
         {
             categoryName: 'Linki',
+            Icon: LucideLink,
             categoryItems: [
                 {
                     itemName: 'Strona główna',
@@ -34,6 +37,44 @@ const Navbar = () => {
                     itemPath: '/events',
                 },
             ],
+        },
+        {
+            categoryName: 'Wydarzenia',
+            Icon: Calendar,
+            categoryItems: [
+                {
+                    itemName: 'Wtyczka',
+                    itemPath: '/events#Wtyczka',
+                },
+                {
+                    itemName: 'Dzień Wydziału',
+                    itemPath: '/events#Dzień Wydziału',
+                },
+                {
+                    itemName: 'Dzień Debila',
+                    itemPath: '/events#Dzień Debila',
+                },
+                {
+                    itemName: 'Akcja Integracja',
+                    itemPath: '/events#Akcja Integracja',
+                },
+                {
+                    itemName: 'Akcja rekrutacja',
+                    itemPath: '/events#Akcja rekrutacja',
+                },
+                {
+                    itemName: 'Konopnica',
+                    itemPath: '/events#Konopnica',
+                },
+            ],
+        },
+        {
+            categoryName: 'Informacje dla studentów',
+            Icon: LibraryBig,
+            categoryItems: infoCardRoutes.map((route) => ({
+                itemName: route.title,
+                itemPath: route.path,
+            })),
         },
     ];
 

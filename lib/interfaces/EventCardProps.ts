@@ -1,5 +1,6 @@
 interface EventCardProps {
     title: string;
+    icon?: string;
     description: string[];
     imageUrl: string;
     path: string;
