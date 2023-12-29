@@ -8,16 +8,16 @@ import {
     CommandItem,
     CommandList,
     CommandSeparator,
-    CommandShortcut,
 } from '@/components/ui/command';
 import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import SearchBarProps from '@/lib/interfaces/SearchBarProps';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     const [open, setOpen] = useState(false);
     const [osButtonText, setOsButtonText] = useState<'⌘' | 'CTRL +' | ''>('');
+    const router = useRouter();
 
     useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -38,11 +38,16 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
         }
     }, []);
 
-    const buttonText = (
-        <>
-            <span className=''>{osButtonText} K</span>
-        </>
-    );
+    const handleSelect = (selectedSearchItem: string) => {
+        const selectedItemDetails = searchBarCategories.map((category) =>
+            category.categoryItems.find((item) => item.itemName.toLowerCase() === selectedSearchItem),
+        )[0];
+        if (!selectedItemDetails) return;
+        setOpen(false);
+        router.push(selectedItemDetails.itemPath);
+    };
+
+    const buttonText = <span className=''>{osButtonText} K</span>;
 
     return (
         <>
@@ -57,49 +62,21 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
                 </kbd>
             </Button>
             <CommandDialog open={open} onOpenChange={setOpen}>
-                <CommandInput placeholder='Type a command or search...' />
+                <CommandInput placeholder='Wyszukaj...' />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
                     {searchBarCategories.map((category) => (
                         <>
                             <CommandGroup key={category.categoryName} heading={category.categoryName}>
                                 {category.categoryItems.map((categoryItem) => (
-                                    <Link href={categoryItem.itemPath} key={categoryItem.itemName} onClick={() => setOpen(false)}>
-                                        <CommandItem className='cursor-pointer'>
-                                            <span>{categoryItem.itemName}</span>
-                                        </CommandItem>
-                                    </Link>
+                                    <CommandItem key={categoryItem.itemName} onSelect={handleSelect} className='cursor-pointer'>
+                                        <span>{categoryItem.itemName}</span>
+                                    </CommandItem>
                                 ))}
                             </CommandGroup>
                             <CommandSeparator />
                         </>
                     ))}
-                    <CommandGroup heading='Pages'>
-                        <CommandItem>
-                            <span>Calendar</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <span>Search Emoji</span>
-                        </CommandItem>
-                        <CommandItem>
-                            <span>Calculator</span>
-                        </CommandItem>
-                    </CommandGroup>
-                    <CommandSeparator />
-                    <CommandGroup heading='Settings'>
-                        <CommandItem>
-                            <span>Profile</span>
-                            <CommandShortcut>⌘P</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem>
-                            <span>Billing</span>
-                            <CommandShortcut>⌘B</CommandShortcut>
-                        </CommandItem>
-                        <CommandItem>
-                            <span>Settings</span>
-                            <CommandShortcut>⌘S</CommandShortcut>
-                        </CommandItem>
-                    </CommandGroup>
                 </CommandList>
             </CommandDialog>
         </>
