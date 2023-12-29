@@ -6,7 +6,7 @@ const IntroSection = () => {
                 Jako WRS rganizujemy wydarzenia, o charakterze kulturalnym, rozwojowym, integracyjnym i wszystkim innym, co przyjdzie nam do
                 głowy.
             </p>
-            <p className='text-muted-foreground'>A oto one!</p>
+            <p className='mt-4'>Zresztą, sprawdź sam! 👇</p>
         </div>
     );
 };
