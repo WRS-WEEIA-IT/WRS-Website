@@ -125,7 +125,11 @@ const Navbar = () => {
                         </SheetTrigger>
                         <SheetContent className='flex flex-col gap-4'>
                             <SheetHeader>
-                                <SheetTitle className='text-start'>WRS WEEIA</SheetTitle>
+                                <SheetClose asChild>
+                                    <Link href='/'>
+                                        <SheetTitle className='text-start'>WRS WEEIA</SheetTitle>
+                                    </Link>
+                                </SheetClose>
                             </SheetHeader>
                             <Separator />
                             <div className='flex flex-col gap-3'>
