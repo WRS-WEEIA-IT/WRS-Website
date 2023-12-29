@@ -10,8 +10,8 @@ const InfoSection = () => {
                     Nie wiesz jak napisać maila do dziekana? A może nawet nie wiesz kto to jest dziekan?
                     <br /> Lub nawet nie zdążyłeś jeszcze się zapisać na studia?
                 </p>
-                <p className='bg-[size:200%] animate-background-pulse whitespace-nowrap mb-12 text-sm md:text-base bg-gradient-to-r from-violet-500 to-pink-500 text-transparent bg-clip-text'>
-                    Nie martw się, wszystko znajdziesz tutaj! 👇
+                <p className='bg-[size:200%] animate-background-pulse mb-12 text-sm md:text-base bg-gradient-to-r from-violet-500 to-pink-500 text-transparent bg-clip-text'>
+                    Nie martw się, <br /> wszystko znajdziesz tutaj! 👇
                 </p>
             </div>
             <div className='grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-max'>
