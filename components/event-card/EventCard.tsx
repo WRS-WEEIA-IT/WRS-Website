@@ -1,25 +1,19 @@
-import Image from 'next/image';
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import EventCardProps from '@/lib/interfaces/EventCardProps';
 import getTailwindColor from '@/lib/utils/getTailwindColor';
 import { appStorage } from '@/lib/config/firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 import ImageAsync from '../image-async/ImageAsync';
 import { Suspense } from 'react';
+import Event from '@/lib/interfaces/firebase/Event';
 
-const getEventImage = async (imageDbUrl: string) => {
-    const imageRef = ref(appStorage, `events/${imageDbUrl}`);
-    console.log(imageRef);
+const getEventImage = async (imageStoragePath: string) => {
+    const imageRef = ref(appStorage, imageStoragePath);
     const imageUrl = await getDownloadURL(imageRef);
-    console.log(imageUrl);
-
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-
     return imageUrl;
 };
 
-const EventCard = async ({ title, description, imageUrl, path, buttonColor, icon }: EventCardProps) => {
+const EventCard = async ({ title, description, storagePath, forwardPath, buttonColor, icon }: Event) => {
     const tailwindColor = getTailwindColor(buttonColor);
 
     return (
@@ -35,12 +29,12 @@ const EventCard = async ({ title, description, imageUrl, path, buttonColor, icon
                             </p>
                         ))}
                     </div>
-                    <Link href={path}>
+                    <Link href={forwardPath}>
                         <Button className={`whitespace-nowrap w-min mt-2 ${tailwindColor} mb-4`}>Sprawdź galerię!</Button>
                     </Link>
                 </div>
                 <Suspense fallback={<div className=' aspect-video bg-secondary rounded-lg animate-pulse' />}>
-                    <ImageAsync src={getEventImage(imageUrl)} alt={title} width={500} height={500} className='rounded-lg aspect-video' />
+                    <ImageAsync src={getEventImage(storagePath)} alt={title} width={500} height={500} className='rounded-lg aspect-video' />
                 </Suspense>
             </div>
         </>
