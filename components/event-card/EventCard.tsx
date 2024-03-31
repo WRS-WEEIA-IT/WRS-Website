@@ -14,7 +14,7 @@ const getEventImage = async (imageStoragePath: string) => {
 };
 
 const EventCard = async ({ title, description, storagePath, forwardPath, buttonColor, icon }: Event) => {
-    const tailwindColor = getTailwindColor(buttonColor);
+    const tailwindButtonColor = getTailwindColor(buttonColor, '500');
 
     return (
         <>
@@ -30,11 +30,17 @@ const EventCard = async ({ title, description, storagePath, forwardPath, buttonC
                         ))}
                     </div>
                     <Link href={forwardPath}>
-                        <Button className={`whitespace-nowrap w-min mt-2 ${tailwindColor} mb-4`}>Sprawdź galerię!</Button>
+                        <Button className={`whitespace-nowrap w-min mt-2 ${tailwindButtonColor} mb-4`}>Sprawdź galerię!</Button>
                     </Link>
                 </div>
                 <Suspense fallback={<div className=' aspect-video bg-secondary rounded-lg animate-pulse' />}>
-                    <ImageAsync src={getEventImage(storagePath)} alt={title} width={500} height={500} className='rounded-lg aspect-video' />
+                    <ImageAsync
+                        src={getEventImage(storagePath)}
+                        alt={title}
+                        width={500}
+                        height={500}
+                        className='rounded-lg aspect-video object-cover'
+                    />
                 </Suspense>
             </div>
         </>
