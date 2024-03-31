@@ -1,7 +1,6 @@
 import EventCard from '@/components/event-card/EventCard';
 import Event from '@/lib/interfaces/firebase/Event';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { initializeApp } from 'firebase/app';
+import { collection, getDocs } from 'firebase/firestore/lite';
 import { appDb } from '@/lib/config/firebase';
 
 const getEvents = async (): Promise<Event[]> => {

@@ -1,6 +1,6 @@
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import getTailwindColor from '@/lib/utils/getTailwindColor';
+import getTailwindColor from '@/lib/helpers/getTailwindColor';
 import { appStorage } from '@/lib/config/firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 import ImageAsync from '../image-async/ImageAsync';
