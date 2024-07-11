@@ -30,10 +30,11 @@ export const infoCardRoutes: InfoCardProps[] = [
     },
     {
         title: 'Koła naukowe',
-        description: 'Koła naukowe działające na naszym wydziale',
+        description: 'Koła naukowe działające na Politechnice Łódzkiej',
         color: 'green',
         Icon: ShipWheel,
-        path: '/info/science-clubs',
+        path: 'https://kola.samorzad.p.lodz.pl/',
+        isNewTab: true,
     },
     {
         title: 'Kierunki',

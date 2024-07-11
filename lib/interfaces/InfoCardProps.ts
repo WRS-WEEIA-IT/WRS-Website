@@ -5,4 +5,5 @@ export default interface InfoCardProps extends Route {
     color: 'red' | 'blue' | 'green' | 'yellow' | 'purple' | 'pink' | 'orange' | 'magenta' | 'cyan' | 'teal';
     description: string;
     Icon: LucideIcon;
+    isNewTab?: boolean;
 }

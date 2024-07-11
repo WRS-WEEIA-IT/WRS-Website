@@ -14,12 +14,10 @@ const EventsSection = async () => {
     const events: Event[] = await getEvents();
 
     return (
-        <div>
-            <div className='site-container flex flex-col mb-12'>
-                {events?.map((event) => (
-                    <EventCard {...event} key={event.title} />
-                ))}
-            </div>
+        <div className='site-container flex flex-col mb-12'>
+            {events?.map((event) => (
+                <EventCard {...event} key={event.title} />
+            ))}
         </div>
     );
 };
