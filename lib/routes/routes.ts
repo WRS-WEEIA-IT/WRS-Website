@@ -1,6 +1,9 @@
 import InfoCardProps from '../interfaces/InfoCardProps';
 import Route from '../interfaces/Route';
 import { Book, CalendarCheck, DoorOpen, GraduationCap, Lightbulb, ShipWheel } from 'lucide-react';
+import SearchBarGroup from '../interfaces/SearchBarCategory';
+import { Link as LucideLink } from 'lucide-react';
+import { Calendar, LibraryBig } from 'lucide-react';
 
 export const navbarRoutes: Route[] = [
     {
@@ -27,10 +30,11 @@ export const infoCardRoutes: InfoCardProps[] = [
     },
     {
         title: 'Koła naukowe',
-        description: 'Koła naukowe działające na naszym wydziale',
+        description: 'Koła naukowe działające na Politechnice Łódzkiej',
         color: 'green',
         Icon: ShipWheel,
-        path: '/info/science-clubs',
+        path: 'https://kola.samorzad.p.lodz.pl/',
+        isNewTab: true,
     },
     {
         title: 'Kierunki',
@@ -59,5 +63,68 @@ export const infoCardRoutes: InfoCardProps[] = [
         color: 'pink',
         Icon: Lightbulb,
         path: '/about-us',
+    },
+];
+
+export const searchBarGroups: SearchBarGroup[] = [
+    {
+        groupName: 'Linki',
+        Icon: LucideLink,
+        items: [
+            {
+                itemName: 'Strona główna',
+                itemPath: '/',
+            },
+            {
+                itemName: 'Dla studentów',
+                itemPath: '/info',
+            },
+            {
+                itemName: 'O nas',
+                itemPath: '/about-us',
+            },
+            {
+                itemName: 'Wydarzenia',
+                itemPath: '/events',
+            },
+        ],
+    },
+    {
+        groupName: 'Wydarzenia',
+        Icon: Calendar,
+        items: [
+            {
+                itemName: 'Wtyczka',
+                itemPath: '/events#Wtyczka',
+            },
+            {
+                itemName: 'Dzień Wydziału',
+                itemPath: '/events#Dzień Wydziału',
+            },
+            {
+                itemName: 'Dzień Debila',
+                itemPath: '/events#Dzień Debila',
+            },
+            {
+                itemName: 'Akcja Integracja',
+                itemPath: '/events#Akcja Integracja',
+            },
+            {
+                itemName: 'Akcja rekrutacja',
+                itemPath: '/events#Akcja rekrutacja',
+            },
+            {
+                itemName: 'Konopnica',
+                itemPath: '/events#Konopnica',
+            },
+        ],
+    },
+    {
+        groupName: 'Informacje dla studentów',
+        Icon: LibraryBig,
+        items: infoCardRoutes.map((route) => ({
+            itemName: route.title,
+            itemPath: route.path,
+        })),
     },
 ];

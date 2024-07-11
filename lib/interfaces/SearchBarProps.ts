@@ -1,7 +1,7 @@
-import SearchBarCategory from './SearchBarCategory';
+import SearchBarGroup from './SearchBarCategory';
 
 interface SearchBarProps {
-    searchBarCategories: SearchBarCategory[];
+    searchBarCategories: SearchBarGroup[];
 }
 
 export default SearchBarProps;

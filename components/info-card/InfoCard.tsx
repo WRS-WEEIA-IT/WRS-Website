@@ -2,7 +2,7 @@ import InfoCardProps from '@/lib/interfaces/InfoCardProps';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
 
-const InfoCard = ({ title, description, color, Icon, path }: InfoCardProps) => {
+const InfoCard = ({ title, description, color, Icon, path, isNewTab }: InfoCardProps) => {
     const colorVariants = {
         blue: {
             bg: 'bg-blue-500',
@@ -68,7 +68,7 @@ const InfoCard = ({ title, description, color, Icon, path }: InfoCardProps) => {
 
     return (
         <Card className={`${colorVariants[color].border} ${colorVariants[color].dropShadow}`}>
-            <Link href={path} className='grid h-full grid-flow-row-dense'>
+            <Link href={path} className='grid h-full grid-flow-row-dense' target={isNewTab ? '_blank' : '_self'}>
                 <CardHeader>
                     <CardTitle className='text-center text-base md:text-lg lg:text-2x'>{title}</CardTitle>
                 </CardHeader>

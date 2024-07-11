@@ -1,12 +1,12 @@
 import { LucideIcon } from 'lucide-react';
 
-interface SearchBarCategory {
-    categoryName: string;
+interface SearchBarGroup {
+    groupName: string;
     Icon: LucideIcon;
-    categoryItems: {
+    items: {
         itemName: string;
         itemPath: string;
     }[];
 }
 
-export default SearchBarCategory;
+export default SearchBarGroup;

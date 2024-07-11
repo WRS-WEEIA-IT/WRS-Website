@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import SearchBarProps from '@/lib/interfaces/SearchBarProps';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     const [open, setOpen] = useState(false);
@@ -40,7 +41,7 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
 
     const handleSelect = (selectedSearchItem: string) => {
         const selectedItemDetails = searchBarCategories
-            .map((category) => category.categoryItems.find((item) => item.itemName.toLowerCase() === selectedSearchItem))
+            .map((category) => category.items.find((item) => item.itemName.toLowerCase() === selectedSearchItem))
             .filter(Boolean)[0];
         if (!selectedItemDetails) return;
         setOpen(false);
@@ -65,18 +66,22 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
                 <CommandInput placeholder='Wyszukaj...' />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    {searchBarCategories.map((category) => (
-                        <>
-                            <CommandGroup key={category.categoryName} heading={category.categoryName}>
-                                {category.categoryItems.map((categoryItem) => (
-                                    <CommandItem key={categoryItem.itemName} onSelect={handleSelect} className='cursor-pointer'>
+                    {searchBarCategories.map((category, index) => (
+                        <React.Fragment key={category.groupName || index}>
+                            <CommandGroup heading={category.groupName}>
+                                {category.items.map((categoryItem) => (
+                                    <CommandItem
+                                        key={categoryItem.itemName}
+                                        onSelect={() => handleSelect(categoryItem.itemName.toLowerCase())}
+                                        className='cursor-pointer'
+                                    >
                                         <category.Icon className='mr-3' />
                                         <span>{categoryItem.itemName}</span>
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
-                            <CommandSeparator />
-                        </>
+                            {index < searchBarCategories.length - 1 && <CommandSeparator />}
+                        </React.Fragment>
                     ))}
                 </CommandList>
             </CommandDialog>

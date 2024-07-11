@@ -23,6 +23,7 @@ const InfoSection = () => {
                         description={route.description}
                         color={route.color}
                         Icon={route.Icon}
+                        isNewTab={route.isNewTab}
                     />
                 ))}
             </div>
