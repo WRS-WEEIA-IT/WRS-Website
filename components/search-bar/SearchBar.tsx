@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import SearchBarProps from '@/lib/interfaces/SearchBarProps';
 import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     const [open, setOpen] = useState(false);
@@ -65,18 +66,22 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
                 <CommandInput placeholder='Wyszukaj...' />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    {searchBarCategories.map((category) => (
-                        <>
-                            <CommandGroup key={category.groupName} heading={category.groupName}>
+                    {searchBarCategories.map((category, index) => (
+                        <React.Fragment key={category.groupName || index}>
+                            <CommandGroup heading={category.groupName}>
                                 {category.items.map((categoryItem) => (
-                                    <CommandItem key={categoryItem.itemName} onSelect={handleSelect} className='cursor-pointer'>
+                                    <CommandItem
+                                        key={categoryItem.itemName}
+                                        onSelect={() => handleSelect(categoryItem.itemName.toLowerCase())}
+                                        className='cursor-pointer'
+                                    >
                                         <category.Icon className='mr-3' />
                                         <span>{categoryItem.itemName}</span>
                                     </CommandItem>
                                 ))}
                             </CommandGroup>
-                            <CommandSeparator />
-                        </>
+                            {index < searchBarCategories.length - 1 && <CommandSeparator />}
+                        </React.Fragment>
                     ))}
                 </CommandList>
             </CommandDialog>
