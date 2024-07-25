@@ -1,6 +1,5 @@
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import getTailwindColor from '@/lib/helpers/getTailwindColor';
 import { appStorage } from '@/lib/config/firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 import ImageAsync from '../image-async/ImageAsync';
@@ -14,8 +13,6 @@ const getEventImage = async (imageStoragePath: string) => {
 };
 
 const EventCard = async ({ title, description, storagePath, forwardPath, buttonColor, icon }: Event) => {
-    const tailwindButtonColor = getTailwindColor(buttonColor, '500');
-
     return (
         <>
             <span id={title} className='mb-24' />
@@ -30,7 +27,9 @@ const EventCard = async ({ title, description, storagePath, forwardPath, buttonC
                         ))}
                     </div>
                     <Link href={forwardPath}>
-                        <Button className={`whitespace-nowrap w-min mt-2 ${tailwindButtonColor} mb-4`}>Sprawdź galerię!</Button>
+                        <Button className={`whitespace-nowrap w-min mt-2 bg-${buttonColor}-500 hover:bg-${buttonColor}-600 mb-4`}>
+                            Sprawdź galerię!
+                        </Button>
                     </Link>
                 </div>
                 <Suspense fallback={<div className=' aspect-video bg-secondary rounded-lg animate-pulse' />}>

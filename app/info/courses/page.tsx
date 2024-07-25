@@ -12,9 +12,10 @@ const getCourses = async (): Promise<Course[]> => {
 
 const CoursesPage = async () => {
     const courses: Course[] = await getCourses();
+    courses.sort((a, b) => a.title.localeCompare(b.title));
 
     return (
-        <div className='site-container'>
+        <div className='site-container grid grid-cols-1 lg:grid-cols-2 gap-4 my-12'>
             {courses.map((course) => (
                 <CourseCard key={course.title} {...course} />
             ))}
