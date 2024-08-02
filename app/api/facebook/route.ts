@@ -1,13 +1,15 @@
 import { appDb } from '@/lib/config/firebase';
-import { addDoc, collection } from '@firebase/firestore/lite';
+import { setDoc, doc } from '@firebase/firestore/lite';
 
 export async function POST(req: Request, res: Response) {
     try {
         const requestBody = await req.json();
-        const { collectionName, data } = requestBody;
+        const data = requestBody;
+        console.info(data);
+        const postId = data.id;
 
-        const collectionRef = collection(appDb, collectionName);
-        const docRef = await addDoc(collectionRef, data);
+        const docRef = doc(appDb, 'news', postId);
+        await setDoc(docRef, data);
 
         return new Response(JSON.stringify(docRef), {
             status: 200,
