@@ -1,5 +1,13 @@
+import MastersGridSection from './[sections]/MastersGridSection';
+import SecondDegreeHeaderSection from './[sections]/SecondDegreeHeaderSection';
+
 const MastersPage = () => {
-    return <div>Masters Page</div>;
+    return (
+        <div>
+            <SecondDegreeHeaderSection />
+            <MastersGridSection />
+        </div>
+    );
 };
 
 export default MastersPage;
