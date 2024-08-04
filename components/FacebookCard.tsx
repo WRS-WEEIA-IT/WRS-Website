@@ -37,7 +37,7 @@ export function formatPolishDate(date: Date) {
     } else if (diffInDays < 7) {
         return formatDistanceToNow(date, { locale: pl, addSuffix: true });
     } else {
-        return format(date, 'd MMMM', { locale: pl });
+        return format(date, 'd MMMM yyyy', { locale: pl });
     }
 }
 
@@ -45,14 +45,14 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
     const date = new Date(timeCreated);
 
     return (
-        <div className=' rounded-lg border shadow-sm w-full max-w-2xl'>
-            <div className='flex items-start p-4'>
-                <Avatar className='w-10 h-10 rounded-full mr-3'>
-                    <AvatarImage src='/weeia_avatar.jpg' alt='WEEIA' />
-                    <AvatarFallback>WEEIA</AvatarFallback>
-                </Avatar>
-                <div className='flex-1'>
-                    <div className='flex items-center justify-between'>
+        <div className='rounded-lg border shadow-sm w-full'>
+            <div className='flex flex-col items-start p-4'>
+                <div className='flex w-full'>
+                    <Avatar className='w-10 h-10 rounded-full mr-3'>
+                        <AvatarImage src='/weeia_avatar.jpg' alt='WEEIA' />
+                        <AvatarFallback>WEEIA</AvatarFallback>
+                    </Avatar>
+                    <div className='flex items-center justify-between w-full'>
                         <div>
                             <h3 className='font-semibold text-sm'>Wydział Elektrotechniki, Elektroniki, Informatyki i Automatyki PŁ</h3>
                             <p className='text-xs text-muted-foreground'>
@@ -65,114 +65,25 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
                             </Button>
                         </Link>
                     </div>
-                    <p className='text-sm mt-2'>{text}</p>
-                    {/* <div className='mt-3 flex items-center justify-between'>
-                        <div className='flex items-center space-x-2 text-muted-foreground'>
-                            <ThumbsUpIcon className='w-5 h-5' />
-                            <span className='text-sm'>125</span>
-                        </div>
-                        <div className='flex items-center space-x-2 text-muted-foreground'>
-                            <MessageCircleIcon className='w-5 h-5' />
-                            <span className='text-sm'>12</span>
-                        </div>
-                        <div className='flex items-center space-x-2 text-muted-foreground'>
-                            <ShareIcon className='w-5 h-5' />
-                            <span className='text-sm'>5</span>
-                        </div>
-                    </div> */}
+                </div>
+                <div className='flex flex-col'>
+                    {text.split('\n').map((line, index) => (
+                        <p key={index} className='text-sm mt-2'>
+                            {line}
+                        </p>
+                    ))}
                 </div>
             </div>
-            <div className='w-full aspect-video'>
+            <div className='w-full '>
                 <Image
                     src={imageUrl}
                     alt='Post image'
                     width={800}
                     height={450}
                     className='object-cover w-full h-full rounded-b-lg'
-                    style={{ aspectRatio: '800/450', objectFit: 'cover' }}
+                    style={{ objectFit: 'cover' }}
                 />
             </div>
         </div>
-    );
-}
-
-function MessageCircleIcon(props) {
-    return (
-        <svg
-            {...props}
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-        >
-            <path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z' />
-        </svg>
-    );
-}
-
-function MoveHorizontalIcon(props) {
-    return (
-        <svg
-            {...props}
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-        >
-            <polyline points='18 8 22 12 18 16' />
-            <polyline points='6 8 2 12 6 16' />
-            <line x1='2' x2='22' y1='12' y2='12' />
-        </svg>
-    );
-}
-
-function ShareIcon(props) {
-    return (
-        <svg
-            {...props}
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-        >
-            <path d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8' />
-            <polyline points='16 6 12 2 8 6' />
-            <line x1='12' x2='12' y1='2' y2='15' />
-        </svg>
-    );
-}
-
-function ThumbsUpIcon(props) {
-    return (
-        <svg
-            {...props}
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-        >
-            <path d='M7 10v12' />
-            <path d='M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z' />
-        </svg>
     );
 }
