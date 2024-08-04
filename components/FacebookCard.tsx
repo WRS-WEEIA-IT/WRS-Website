@@ -19,31 +19,54 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import FacebookPost from '@/lib/interfaces/firebase/FacebookPost';
+import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { formatDistanceToNow, format, isToday, isYesterday, differenceInDays } from 'date-fns';
+import { pl } from 'date-fns/locale';
 
-export function FacebookCard() {
+export function formatPolishDate(date: Date) {
+    const now = new Date();
+    const diffInDays = differenceInDays(now, date);
+
+    if (isToday(date)) {
+        return formatDistanceToNow(date, { locale: pl, addSuffix: true });
+    } else if (isYesterday(date)) {
+        return 'wczoraj';
+    } else if (diffInDays < 7) {
+        return formatDistanceToNow(date, { locale: pl, addSuffix: true });
+    } else {
+        return format(date, 'd MMMM', { locale: pl });
+    }
+}
+
+export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost) {
+    const date = new Date(timeCreated);
+
     return (
-        <div className='bg-white rounded-lg border shadow-sm w-full max-w-2xl'>
+        <div className=' rounded-lg border shadow-sm w-full max-w-2xl'>
             <div className='flex items-start p-4'>
                 <Avatar className='w-10 h-10 rounded-full mr-3'>
-                    <AvatarImage src='/placeholder-user.jpg' alt='John Doe' />
-                    <AvatarFallback>JD</AvatarFallback>
+                    <AvatarImage src='/weeia_avatar.jpg' alt='WEEIA' />
+                    <AvatarFallback>WEEIA</AvatarFallback>
                 </Avatar>
                 <div className='flex-1'>
                     <div className='flex items-center justify-between'>
                         <div>
-                            <h3 className='font-semibold text-sm'>John Doe</h3>
+                            <h3 className='font-semibold text-sm'>Wydział Elektrotechniki, Elektroniki, Informatyki i Automatyki PŁ</h3>
                             <p className='text-xs text-muted-foreground'>
-                                <time dateTime='2023-08-04T12:34:56'>4 hrs</time>
+                                <time dateTime={`${date}`}>{formatPolishDate(date)}</time>
                             </p>
                         </div>
-                        <Button variant='ghost' size='icon' className='rounded-full'>
-                            <MoveHorizontalIcon className='w-5 h-5' />
-                        </Button>
+                        <Link href={link} target='_blank' passHref>
+                            <Button variant='ghost' size='icon' className='rounded-full'>
+                                <ExternalLink />
+                            </Button>
+                        </Link>
                     </div>
-                    <p className='text-sm mt-2'>
-                        Excited to share my latest project with you all! Check it out and let me know what you think. #webdev #react
-                    </p>
-                    <div className='mt-3 flex items-center justify-between'>
+                    <p className='text-sm mt-2'>{text}</p>
+                    {/* <div className='mt-3 flex items-center justify-between'>
                         <div className='flex items-center space-x-2 text-muted-foreground'>
                             <ThumbsUpIcon className='w-5 h-5' />
                             <span className='text-sm'>125</span>
@@ -56,12 +79,12 @@ export function FacebookCard() {
                             <ShareIcon className='w-5 h-5' />
                             <span className='text-sm'>5</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className='w-full aspect-video'>
-                <img
-                    src='/placeholder.svg'
+                <Image
+                    src={imageUrl}
                     alt='Post image'
                     width={800}
                     height={450}
