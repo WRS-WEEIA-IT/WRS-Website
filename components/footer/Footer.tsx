@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className='w-[24px] h-[24px]'>
                     <Phone />
                 </div>
-                <p>(+48) 123 123 123</p>
+                <p>(+48) 42 631 24 98</p>
             </div>
             <a href='https://www.facebook.com/weeia' className='flex gap-4 text-muted-foreground '>
                 <div className='w-[24px] h-[24px]'>
