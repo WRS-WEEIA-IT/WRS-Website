@@ -28,7 +28,7 @@ const EnhancedNewsSection = ({ facebookPosts }: { facebookPosts: FacebookPost[] 
     };
 
     return (
-        <section id='news' className='flex flex-col gap-8 site-container'>
+        <section id='news' className='flex flex-col gap-8 md:site-container'>
             <div>
                 <h2 className='text-3xl font-semibold leading-none tracking-tight mb-3'>Aktualności</h2>
                 <p className='text-lg text-muted-foreground'>Bądź na bieżąco!</p>
