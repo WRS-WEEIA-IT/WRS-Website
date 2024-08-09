@@ -52,7 +52,7 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
                         <AvatarImage src='/weeia_avatar.jpg' alt='WEEIA' />
                         <AvatarFallback>WEEIA</AvatarFallback>
                     </Avatar>
-                    <div className='flex items-center justify-between w-full'>
+                    <div className='flex justify-between w-full'>
                         <div>
                             <h3 className='font-semibold text-sm'>Wydział Elektrotechniki, Elektroniki, Informatyki i Automatyki PŁ</h3>
                             <p className='text-xs text-muted-foreground'>
