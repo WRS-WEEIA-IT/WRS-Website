@@ -1,4 +1,4 @@
-import { Facebook, Mail, Phone } from 'lucide-react';
+import { Facebook, Mail, Phone, Instagram } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -20,6 +20,12 @@ const Footer = () => {
                     <Facebook />
                 </div>
                 <p>Wydział Elektrotechniki Elektroniki Informatyki i Automatyki</p>
+            </a>
+            <a href='https://www.instagram.com/weeia_/' className='flex gap-4 text-muted-foreground '>
+                <div className='w-[24px] h-[24px]'>
+                    <Instagram />
+                </div>
+                <p>weeia_</p>
             </a>
         </footer>
     );
