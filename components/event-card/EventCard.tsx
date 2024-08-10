@@ -1,10 +1,10 @@
 import { Button } from '../ui/button';
-import Link from 'next/link';
 import { appStorage } from '@/lib/config/firebase';
 import { getDownloadURL, ref } from 'firebase/storage';
 import ImageAsync from '../image-async/ImageAsync';
 import { Suspense } from 'react';
 import Event from '@/lib/interfaces/firebase/Event';
+import { Facebook, Globe } from 'lucide-react';
 
 const getEventImage = async (imageStoragePath: string) => {
     const imageRef = ref(appStorage, imageStoragePath);
@@ -12,7 +12,7 @@ const getEventImage = async (imageStoragePath: string) => {
     return imageUrl;
 };
 
-const EventCard = async ({ title, description, storagePath, forwardPath, buttonColor, icon }: Event) => {
+const EventCard = async ({ title, description, storagePath, facebookPath, websitePath, buttonColor, icon }: Event) => {
     return (
         <>
             <span id={title} className='mb-24' />
@@ -26,11 +26,30 @@ const EventCard = async ({ title, description, storagePath, forwardPath, buttonC
                             </p>
                         ))}
                     </div>
-                    <Link href={forwardPath}>
-                        <Button className={`whitespace-nowrap w-min mt-2 bg-${buttonColor}-500 hover:bg-${buttonColor}-600 mb-4`}>
-                            Sprawdź galerię!
-                        </Button>
-                    </Link>
+                    <div className='flex gap-4 md-gap-4 mt-4 mb-4 md:mb-0'>
+                        <a href={facebookPath} className='w-full md:w-min'>
+                            <Button
+                                className={`h-12 whitespace-nowrap w-full md:w-min bg-${buttonColor}-500 hover:bg-${buttonColor}-600 flex gap-4`}
+                            >
+                                <div>
+                                    <Facebook />
+                                </div>
+                                <p className='hidden md:block'>Wydarzenie</p>
+                            </Button>
+                        </a>
+                        {websitePath && (
+                            <a href={websitePath} className='w-full md:w-min'>
+                                <Button
+                                    className={`h-12 whitespace-nowrap w-full md:w-min  bg-${buttonColor}-500 hover:bg-${buttonColor}-600 flex gap-4`}
+                                >
+                                    <div>
+                                        <Globe />
+                                    </div>
+                                    <p className='hidden md:block'>Strona</p>
+                                </Button>
+                            </a>
+                        )}
+                    </div>
                 </div>
                 <Suspense fallback={<div className=' aspect-video bg-secondary rounded-lg animate-pulse' />}>
                     <ImageAsync
