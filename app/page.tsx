@@ -1,8 +1,8 @@
 import AboutSection from '@/app/[sections]/AboutSection';
-import DutiesSection from '@/app/[sections]/DutiesSection';
 import LandingSection from '@/app/[sections]/LandingSection';
 import NewsSection from '@/app/[sections]/NewsSection';
 import { Suspense } from 'react';
+import MapSection from './[sections]/MapSection';
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
                 <NewsSection />
             </Suspense>
             <AboutSection />
-            <DutiesSection />
+            <MapSection />
         </main>
     );
 }
