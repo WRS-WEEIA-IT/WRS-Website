@@ -3,7 +3,8 @@ interface Event {
     icon?: string;
     description: string[];
     storagePath: string;
-    forwardPath: string;
+    facebookPath: string;
+    websitePath?: string;
     buttonColor: string;
 }
 
