@@ -87,6 +87,10 @@ export const searchBarGroups: SearchBarGroup[] = [
                 itemName: 'Wydarzenia',
                 itemPath: '/events',
             },
+            {
+                itemName: 'Aktualności',
+                itemPath: '/news',
+            },
         ],
     },
     {
@@ -102,20 +106,12 @@ export const searchBarGroups: SearchBarGroup[] = [
                 itemPath: '/events#Dzień Wydziału',
             },
             {
-                itemName: 'Dzień Debila',
-                itemPath: '/events#Dzień Debila',
-            },
-            {
                 itemName: 'Akcja Integracja',
                 itemPath: '/events#Akcja Integracja',
             },
             {
                 itemName: 'Akcja rekrutacja',
                 itemPath: '/events#Akcja rekrutacja',
-            },
-            {
-                itemName: 'Konopnica',
-                itemPath: '/events#Konopnica',
             },
         ],
     },

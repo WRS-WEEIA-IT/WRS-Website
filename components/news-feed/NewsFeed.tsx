@@ -36,7 +36,7 @@ const NewsFeed = ({ facebookPosts }: { facebookPosts: FacebookPost[] }) => {
 
             <div className='grid grid-cols-1 md:grid-cols-1 gap-8'>
                 {posts.slice(0, visiblePosts).map((post) => (
-                    <FacebookCard {...post} text={post.text} key={post.id} />
+                    <FacebookCard {...post} key={post.id} />
                 ))}
             </div>
 
@@ -50,7 +50,7 @@ const NewsFeed = ({ facebookPosts }: { facebookPosts: FacebookPost[] }) => {
             )}
 
             <Card className='items-center justify-center inline-flex card-hover mt-8'>
-                <Link href='/' className='whitespace-nowrap p-6 text-lg'>
+                <Link href='/news' className='whitespace-nowrap p-6 text-lg'>
                     Zobacz wszystkie aktualności
                 </Link>
             </Card>

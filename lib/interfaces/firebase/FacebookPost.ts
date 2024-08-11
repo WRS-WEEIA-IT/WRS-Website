@@ -1,7 +1,7 @@
 interface FacebookPost {
     id: string;
     text: string;
-    imageUrl: string;
+    imageUrl?: string;
     link: string;
     timeCreated: Date;
 }
