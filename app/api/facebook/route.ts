@@ -5,7 +5,6 @@ export async function POST(req: Request, res: Response) {
     try {
         const requestBody = await req.json();
         const data = requestBody;
-        console.info(data);
         const postId = data.id;
 
         const docRef = doc(appDb, 'news', postId);
