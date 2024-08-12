@@ -1,28 +1,12 @@
 import NewsFeed from '@/components/news-feed/NewsFeed';
-import { appDb } from '@/lib/config/firebase';
-import FacebookPost from '@/lib/interfaces/firebase/FacebookPost';
-import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore/lite';
-
-const getFacebookPosts = async (): Promise<FacebookPost[]> => {
-    const newsCollection = collection(appDb, 'news');
-    const q = query(newsCollection, orderBy('timeCreated', 'desc'), limit(10));
-    const newsSnapshot = await getDocs(q);
-    const newsList = newsSnapshot.docs.map((doc) => {
-        const data = doc.data();
-        return {
-            ...data,
-            timeCreated: new Date(data.timeCreated),
-        };
-    });
-    return newsList as FacebookPost[];
-};
+import { getFacebookPosts } from '@/lib/utils';
 
 const NewsSection = async () => {
-    const facebookPosts = await getFacebookPosts();
+    const { posts } = await getFacebookPosts(null, 3);
 
     return (
         <section id='news' className='flex flex-col gap-6 site-container'>
-            <NewsFeed facebookPosts={facebookPosts} />
+            <NewsFeed posts={posts} />
         </section>
     );
 };
