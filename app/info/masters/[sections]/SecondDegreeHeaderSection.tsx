@@ -11,7 +11,7 @@ const SecondDegreeHeaderSection = async () => {
                 <h1 className='text-4xl md:text-5xl font-bold text-white mb-2'>Studia 2. stopnia</h1>
                 <div className='flex items-center justify-center text-white'>
                     <GraduationCap className='mr-2' />
-                    <p className='text-lg md:text-xl'>Rozpocznij swoją akademicką podróż</p>
+                    <p className='text-lg md:text-xl'>Kontynuuj swoją akademicką podróż</p>
                 </div>
             </div>
         </div>
