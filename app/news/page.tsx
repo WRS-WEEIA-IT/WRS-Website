@@ -5,13 +5,13 @@ import { getFacebookPosts } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import FacebookPost from '@/lib/interfaces/firebase/FacebookPost';
 import { DocumentData } from 'firebase/firestore/lite';
-import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 const NewsPage = () => {
     const [lastDocument, setLastDocument] = useState<DocumentData | null>(null);
     const [facebookPosts, setFacebookPosts] = useState<FacebookPost[]>([]);
     const [loading, setLoading] = useState(false);
-    const postsPerPage = 10;
+    const postsPerPage = 5;
 
     const loadPosts = async (isInitial: boolean = false) => {
         setLoading(true);
@@ -50,12 +50,24 @@ const NewsPage = () => {
                     {facebookPosts.map((post, index) => (
                         <FacebookCard key={index} {...post} />
                     ))}
+                    {lastDocument && (
+                        <Card className='items-center justify-center inline-flex card-hover mb-12'>
+                            <div
+                                className={`p-6 w-full text-center cursor-pointer ${
+                                    loading ? ' text-muted-foreground' : 'text-foreground'
+                                }`}
+                                onClick={handleShowMore}
+                            >
+                                {loading ? 'Ładuję...' : 'Pokaż więcej'}
+                            </div>
+                        </Card>
+                    )}
+                    {!lastDocument && facebookPosts.length > 0 && (
+                        <Card className='items-center justify-center inline-flex  mb-12'>
+                            <div className='p-6 text-muted-foreground'>To już wszystkie aktualności!</div>
+                        </Card>
+                    )}
                 </div>
-                {lastDocument && (
-                    <Button onClick={handleShowMore} disabled={loading} className='mt-4'>
-                        {loading ? 'Loading...' : 'Show More'}
-                    </Button>
-                )}
             </div>
         </div>
     );
