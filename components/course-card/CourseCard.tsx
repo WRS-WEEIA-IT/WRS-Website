@@ -22,7 +22,7 @@ const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, cour
     const toggleExpand = () => setIsExpanded(!isExpanded);
 
     return (
-        <Card className='grid h-full grid-flow-row-dense'>
+        <Card className='grid h-full grid-flow-row-dense' id={title}>
             <CardHeader className='flex flex-row items-baseline gap-2'>
                 <CardTitle>{titleIcon}</CardTitle>
                 <CardTitle>{title}</CardTitle>

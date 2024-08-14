@@ -1,14 +1,6 @@
-import { collection, getDocs } from 'firebase/firestore/lite';
-import { appDb } from '@/lib/config/firebase';
 import Course from '@/lib/interfaces/firebase/Course';
 import CourseCard from '@/components/course-card/CourseCard';
-
-const getMasters = async (): Promise<Course[]> => {
-    const mastersCollection = collection(appDb, 'masters');
-    const mastersSnapshot = await getDocs(mastersCollection);
-    const mastersList = mastersSnapshot.docs.map((doc) => doc.data());
-    return mastersList as Course[];
-};
+import { getMasters } from '@/lib/utils';
 
 const MastersGridSection = async () => {
     const courses: Course[] = await getMasters();

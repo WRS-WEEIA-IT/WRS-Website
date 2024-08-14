@@ -14,10 +14,15 @@ import { Button } from '../ui/button';
 import SearchBarProps from '@/lib/interfaces/SearchBarProps';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import Course from '@/lib/interfaces/firebase/Course';
+import { getCourses, getMasters } from '@/lib/utils';
+import { DoorOpen, GraduationCap } from 'lucide-react';
 
 const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
     const [open, setOpen] = useState(false);
     const [osButtonText, setOsButtonText] = useState<'⌘' | 'CTRL +' | ''>('');
+    const [courses, setCourses] = useState<any>();
+    const [masters, setMasters] = useState<any>();
     const router = useRouter();
 
     useEffect(() => {
@@ -37,6 +42,50 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
             const isMac = navigator.platform.indexOf('Mac') != -1 ? '⌘' : 'CTRL +';
             setOsButtonText(isMac);
         }
+    }, []);
+
+    useEffect(() => {
+        async function setCoursesNavigation() {
+            const fetchedCourses = await getCourses();
+            const fetchedMasters = await getMasters();
+
+            setCourses(
+                <CommandGroup heading='Kierunki'>
+                    {fetchedCourses.map((course: Course) => (
+                        <CommandItem
+                            key={course.title}
+                            onSelect={() => {
+                                setOpen(false);
+                                router.push(`/info/courses/${course.title}`);
+                            }}
+                            className='cursor-pointer'
+                        >
+                            <DoorOpen className='mr-3' />
+                            <span>{course.title}</span>
+                        </CommandItem>
+                    ))}
+                </CommandGroup>,
+            );
+
+            setMasters(
+                <CommandGroup heading='Studia magisterskie'>
+                    {fetchedMasters.map((course: Course) => (
+                        <CommandItem
+                            key={course.title}
+                            onSelect={() => {
+                                setOpen(false);
+                                router.push(`/info/masters/${course.title}`);
+                            }}
+                            className='cursor-pointer'
+                        >
+                            <GraduationCap className='mr-3' />
+                            <span>{course.title}</span>
+                        </CommandItem>
+                    ))}
+                </CommandGroup>,
+            );
+        }
+        setCoursesNavigation();
     }, []);
 
     const handleSelect = (selectedSearchItem: string) => {
@@ -83,6 +132,8 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
                             {index < searchBarCategories.length - 1 && <CommandSeparator />}
                         </React.Fragment>
                     ))}
+                    {courses}
+                    {masters}
                 </CommandList>
             </CommandDialog>
         </>
