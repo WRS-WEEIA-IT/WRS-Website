@@ -4,6 +4,7 @@ import { collection, query, orderBy, limit, startAfter, getDocs, DocumentData } 
 import { appDb } from './config/firebase';
 import FacebookPost from './interfaces/firebase/FacebookPost';
 import Course from './interfaces/firebase/Course';
+import Event from './interfaces/firebase/Event';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -43,4 +44,11 @@ export const getMasters = async (): Promise<Course[]> => {
     const mastersSnapshot = await getDocs(mastersCollection);
     const mastersList = mastersSnapshot.docs.map((doc) => doc.data());
     return mastersList as Course[];
+};
+
+export const getEvents = async (): Promise<Event[]> => {
+    const eventsCollection = collection(appDb, 'events');
+    const eventsSnapshot = await getDocs(eventsCollection);
+    const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
+    return eventsList as Event[];
 };
