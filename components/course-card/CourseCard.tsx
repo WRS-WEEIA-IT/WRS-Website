@@ -22,11 +22,10 @@ const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, cour
     const toggleExpand = () => setIsExpanded(!isExpanded);
 
     return (
-        <Card className='grid h-full grid-flow-row-dense '>
-            <CardHeader>
-                <CardTitle>
-                    {titleIcon} {title}
-                </CardTitle>
+        <Card className='grid h-full grid-flow-row-dense'>
+            <CardHeader className='flex flex-row items-baseline gap-2'>
+                <CardTitle>{titleIcon}</CardTitle>
+                <CardTitle>{title}</CardTitle>
             </CardHeader>
             <CardContent>
                 <CardDescription>
@@ -59,12 +58,12 @@ const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, cour
                 </CardDescription>
             </CardContent>
             <CardFooter className='flex gap-4'>
-                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600`}>
+                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min`}>
                     <Link href={courseDescriptionLink} target='_blank'>
                         Pełny opis kierunku
                     </Link>
                 </Button>
-                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600`}>
+                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min`}>
                     <Link href={coursePlanLink} target='_blank'>
                         Szczegółowy plan studiów
                     </Link>
