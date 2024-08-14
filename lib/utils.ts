@@ -32,18 +32,6 @@ export async function getFacebookPosts(
 }
 
 export const getCourses = async (): Promise<Course[]> => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return [
-        {
-            courseDescriptionLink: 'asd',
-            coursePlanLink: 'asd',
-            description: 'nice course',
-            title: 'course 1',
-            titleIcon: 'dupa',
-            buttonColor: 'blue',
-        },
-    ];
-
     const coursesCollection = collection(appDb, 'courses');
     const coursesSnapshot = await getDocs(coursesCollection);
     const coursesList = coursesSnapshot.docs.map((doc) => doc.data());

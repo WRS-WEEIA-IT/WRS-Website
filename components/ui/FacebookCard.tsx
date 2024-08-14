@@ -70,3 +70,37 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
         </div>
     );
 }
+
+export function FacebookCardSkeleton() {
+    return (
+        <div className='rounded-lg border shadow-sm w-full'>
+            <div className='flex flex-col items-start p-4'>
+                <div className='flex w-full'>
+                    <Avatar className='w-10 h-10 animate-pulse mr-3'>
+                        <AvatarFallback className='animate-pulse' />
+                    </Avatar>
+                    <div className='flex justify-between w-full'>
+                        <div>
+                            <h3 className='font-semibold text-sm'>
+                                <div className='w-20 h-4 bg-gray-300 animate-pulse mb-1 rounded-sm' />
+                            </h3>
+                            <p className='text-xs text-muted-foreground'>
+                                <div className='w-10 h-3 bg-gray-300 animate-pulse rounded-sm' />
+                            </p>
+                        </div>
+                        <Button variant='ghost' size='icon' className='rounded-full'>
+                            <ExternalLink />
+                        </Button>
+                    </div>
+                </div>
+                <div className='flex flex-col w-full'>
+                    <div className='w-40 h-3 bg-gray-300 animate-pulse mt-2 rounded-sm' />
+                    <div className='w-60 h-3 bg-gray-300 animate-pulse mt-2 rounded-sm' />
+                    <div className='w-50 h-3 bg-gray-300 animate-pulse mt-2 rounded-sm' />
+                    <div className='w-70 h-3 bg-gray-300 animate-pulse mt-2 rounded-sm' />
+                </div>
+            </div>
+            <div className='w-full h-48 bg-gray-300 animate-pulse rounded-b-lg' />
+        </div>
+    );
+}
