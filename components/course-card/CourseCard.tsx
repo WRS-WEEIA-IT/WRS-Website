@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription, CardFooter }
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import Course from '@/lib/interfaces/firebase/Course';
 
-const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, coursePlanLink, buttonColor }: Course) => {
+export const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, coursePlanLink, buttonColor }: Course) => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [height, setHeight] = useState('0px');
     const contentRef = useRef<HTMLDivElement>(null);
@@ -73,4 +73,35 @@ const CourseCard = ({ title, titleIcon, description, courseDescriptionLink, cour
     );
 };
 
-export default CourseCard;
+export const CourseCardSkeleton = () => {
+    return (
+        <Card className='grid h-full grid-flow-row-dense'>
+            <CardHeader className='flex flex-row items-baseline gap-2'>
+                <CardTitle>
+                    <div className='animate-pulse bg-gray-200 h-6 w-6 rounded-full' />
+                </CardTitle>
+                <CardTitle>
+                    <div className='animate-pulse bg-gray-200 h-6 w-24 rounded-full' />
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                <CardDescription>
+                    <div className='animate-pulse bg-gray-200 h-4 w-full rounded-md mb-2' />
+                    <div className='animate-pulse bg-gray-200 h-4 w-full rounded-md mb-2' />
+                    <div className='animate-pulse bg-gray-200 h-4 w-full rounded-md mb-2' />
+                </CardDescription>
+                <CardDescription className='pt-4 text-end'>
+                    <div className='animate-pulse bg-gray-200 h-4 w-24 rounded-md' />
+                </CardDescription>
+            </CardContent>
+            <CardFooter className='flex gap-4'>
+                <Button className={`bg-gray-200 hover:bg-gray-300 w-24`}>
+                    <div className='animate-pulse bg-gray-200 h-4 w-full rounded-md' />
+                </Button>
+                <Button className={`bg-gray-200 hover:bg-gray-300 w-24`}>
+                    <div className='animate-pulse bg-gray-200 h-4 w-full rounded-md' />
+                </Button>
+            </CardFooter>
+        </Card>
+    );
+};

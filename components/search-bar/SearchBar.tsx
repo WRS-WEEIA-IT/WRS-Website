@@ -50,39 +50,45 @@ const SearchBar = ({ searchBarCategories }: SearchBarProps) => {
             const fetchedMasters = await getMasters();
 
             setCourses(
-                <CommandGroup heading='Kierunki'>
-                    {fetchedCourses.map((course: Course) => (
-                        <CommandItem
-                            key={course.title}
-                            onSelect={() => {
-                                setOpen(false);
-                                router.push(`/info/courses/${course.title}`);
-                            }}
-                            className='cursor-pointer'
-                        >
-                            <DoorOpen className='mr-3' />
-                            <span>{course.title}</span>
-                        </CommandItem>
-                    ))}
-                </CommandGroup>,
+                <>
+                    <CommandSeparator />
+                    <CommandGroup heading='Kierunki'>
+                        {fetchedCourses.map((course: Course) => (
+                            <CommandItem
+                                key={course.title}
+                                onSelect={() => {
+                                    setOpen(false);
+                                    router.push(`/info/courses/#${course.title}`);
+                                }}
+                                className='cursor-pointer'
+                            >
+                                <DoorOpen className='mr-3' />
+                                <span>{course.title}</span>
+                            </CommandItem>
+                        ))}
+                    </CommandGroup>
+                </>,
             );
 
             setMasters(
-                <CommandGroup heading='Studia magisterskie'>
-                    {fetchedMasters.map((course: Course) => (
-                        <CommandItem
-                            key={course.title}
-                            onSelect={() => {
-                                setOpen(false);
-                                router.push(`/info/masters/${course.title}`);
-                            }}
-                            className='cursor-pointer'
-                        >
-                            <GraduationCap className='mr-3' />
-                            <span>{course.title}</span>
-                        </CommandItem>
-                    ))}
-                </CommandGroup>,
+                <>
+                    <CommandSeparator />
+                    <CommandGroup heading='Studia magisterskie'>
+                        {fetchedMasters.map((course: Course) => (
+                            <CommandItem
+                                key={course.title}
+                                onSelect={() => {
+                                    setOpen(false);
+                                    router.push(`/info/masters/#${course.title}`);
+                                }}
+                                className='cursor-pointer'
+                            >
+                                <GraduationCap className='mr-3' />
+                                <span>{course.title} II stopnia</span>
+                            </CommandItem>
+                        ))}
+                    </CommandGroup>
+                </>,
             );
         }
         setCoursesNavigation();
