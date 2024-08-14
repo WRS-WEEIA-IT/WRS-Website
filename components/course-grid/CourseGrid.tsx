@@ -5,7 +5,6 @@ import ErrorIndicator from '../error-indicator/ErrorIndicator';
 
 const CourseGrid = async () => {
     try {
-        await new Promise((resolve) => setTimeout(resolve, 10000));
         const courses: Course[] = await getCourses();
         courses.sort((a, b) => a.title.localeCompare(b.title));
 
