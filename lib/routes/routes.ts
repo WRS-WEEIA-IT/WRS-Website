@@ -30,7 +30,7 @@ export const infoCardRoutes: InfoCardProps[] = [
     },
     {
         title: 'Koła naukowe',
-        description: 'Koła naukowe działające na Politechnice Łódzkiej',
+        description: 'Koła naukowe działające na wydziale EEIA',
         color: 'green',
         Icon: ShipWheel,
         path: 'https://kola.samorzad.p.lodz.pl/kola-naukowe?faculty=weeia',
