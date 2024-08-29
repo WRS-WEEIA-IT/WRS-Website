@@ -19,7 +19,7 @@ const NewsSection = async () => {
                     </Suspense>
                 </div>
 
-                <Card className='items-center justify-center inline-flex card-hover'>
+                <Card className='items-center justify-center inline-flex card-hover shadow-xl'>
                     <Link href='/news' className='whitespace-nowrap p-6 text-lg'>
                         Zobacz wszystkie aktualności
                     </Link>
