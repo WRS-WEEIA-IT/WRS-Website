@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     ],
     applicationName: 'Strona WRS WEEIA',
     metadataBase: new URL('https://wrs-weeia.vercel.app'),
+    verification: {
+        google: 'ekih5lQc-BuTlfp5TQmoGj6JBJHckjoPjqC_NMB9IU8',
+    },
     openGraph: {
         title: 'Oficjalna strona WRS WEEIA',
         description: 'Oficjalna strona WRS WEEIA Politechniki Łódzkiej',
