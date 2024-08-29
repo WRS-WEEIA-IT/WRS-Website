@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     applicationName: 'Strona WRS WEEIA',
     metadataBase: new URL('https://wrs-weeia.vercel.app'),
     verification: {
-        google: 'ekih5lQc-BuTlfp5TQmoGj6JBJHckjoPjqC_NMB9IU8',
+        google: 'OGP2Iea1vrfSWnglcU1sIHw4bgkWrGySwJ8xIn_5NJU',
     },
     openGraph: {
         title: 'Oficjalna strona WRS WEEIA',
