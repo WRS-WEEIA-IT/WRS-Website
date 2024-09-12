@@ -46,12 +46,12 @@ const NewsPage = () => {
                 </div>
             </div>
             <div className='news-page site-container mt-12'>
-                <div className='news-list site-container flex flex-col gap-8'>
+                <div className='news-list md:site-container flex flex-col gap-8'>
                     {facebookPosts.map((post, index) => (
                         <FacebookCard key={index} {...post} />
                     ))}
                     {lastDocument && (
-                        <Card className='items-center justify-center inline-flex card-hover mb-12'>
+                        <Card className='items-center justify-center inline-flex card-hover mb-12 shadow-xl'>
                             <div
                                 className={`p-6 w-full text-center cursor-pointer ${
                                     loading ? ' text-muted-foreground' : 'text-foreground'
@@ -63,7 +63,7 @@ const NewsPage = () => {
                         </Card>
                     )}
                     {!lastDocument && facebookPosts.length > 0 && (
-                        <Card className='items-center justify-center inline-flex  mb-12'>
+                        <Card className='items-center justify-center inline-flex  mb-12 shadow-xl'>
                             <div className='p-6 text-muted-foreground'>To już wszystkie aktualności!</div>
                         </Card>
                     )}

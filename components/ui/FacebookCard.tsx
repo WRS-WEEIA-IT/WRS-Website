@@ -26,7 +26,7 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
     const date = new Date(timeCreated);
 
     return (
-        <div className='rounded-lg border shadow-sm w-full'>
+        <div className='rounded-lg border shadow-xl w-full'>
             <div className='flex flex-col items-start p-4'>
                 <div className='flex w-full'>
                     <Avatar className='w-10 h-10 rounded-full mr-3'>
