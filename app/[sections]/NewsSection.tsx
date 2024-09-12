@@ -1,3 +1,4 @@
+import { FadeText } from '@/components/magicui/fade-text';
 import NewsFeed from '@/components/news-feed/NewsFeed';
 import { Card } from '@/components/ui/card';
 import { FacebookCardSkeleton } from '@/components/ui/FacebookCard';
@@ -9,8 +10,22 @@ const NewsSection = async () => {
         <section id='news' className='flex flex-col gap-6 site-container'>
             <div className='flex flex-col gap-8 md:site-container'>
                 <div>
-                    <h2 className='text-3xl font-semibold leading-none tracking-tight mb-3'>Aktualności</h2>
-                    <p className='text-lg text-muted-foreground'>Bądź na bieżąco!</p>
+                    <FadeText
+                        className='text-3xl font-semibold leading-none tracking-tight mb-3'
+                        text='Aktualności'
+                        direction='left'
+                        framerProps={{
+                            show: { transition: { delay: 0.1 } },
+                        }}
+                    />
+                    <FadeText
+                        className='text-lg text-muted-foreground'
+                        text='Bądź na bieżąco!'
+                        direction='left'
+                        framerProps={{
+                            show: { transition: { delay: 0.1 } },
+                        }}
+                    />
                 </div>
 
                 <div className='grid grid-cols-1 md:grid-cols-1 gap-8'>
