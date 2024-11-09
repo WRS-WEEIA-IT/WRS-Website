@@ -13,6 +13,8 @@ import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Textarea } from './textarea';
+import { AutosizeTextarea } from './autosize-textarea';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -287,10 +289,13 @@ SidebarInset.displayName = 'SidebarInset';
 const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.ComponentProps<typeof Input>>(
     ({ className, ...props }, ref) => {
         return (
-            <Input
+            <AutosizeTextarea
                 ref={ref}
                 data-sidebar='input'
-                className={cn('h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring', className)}
+                className={cn(
+                    'resize-none h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring',
+                    className,
+                )}
                 {...props}
             />
         );
