@@ -71,7 +71,7 @@ export function AssistantSidebar() {
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
-                    <ScrollArea className='h-[calc(100vh-8rem)] px-4'>
+                    <ScrollArea className='h-[calc(100vh-8rem)] px-4 pt-4'>
                         {messages.length === 0 ? (
                             <div className='flex flex-col items-center justify-center h-full text-center px-6 text-muted-foreground'>
                                 <MessageSquare className='h-12 w-12 mb-4 opacity-50' />
