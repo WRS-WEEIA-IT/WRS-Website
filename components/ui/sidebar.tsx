@@ -286,7 +286,7 @@ const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<'main
 });
 SidebarInset.displayName = 'SidebarInset';
 
-const SidebarInput = React.forwardRef<React.ElementRef<typeof Input>, React.ComponentProps<typeof Input>>(
+const SidebarInput = React.forwardRef<React.ElementRef<typeof AutosizeTextarea>, React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
     ({ className, ...props }, ref) => {
         return (
             <AutosizeTextarea

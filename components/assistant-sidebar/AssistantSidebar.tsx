@@ -75,7 +75,7 @@ export function AssistantSidebar() {
                         {messages.length === 0 ? (
                             <div className='flex flex-col items-center justify-center h-full text-center px-6 text-muted-foreground'>
                                 <MessageSquare className='h-12 w-12 mb-4 opacity-50' />
-                                <h3 className='text-lg font-semibold mb-2'>Witaj w Weejkuś!</h3>
+                                <h3 className='text-lg font-semibold mb-2'>Cześć jestem Weejkuś!</h3>
                                 <p className='text-sm'>
                                     Jestem twoim asystentem WRS WEEIA. Możesz zadać mi pytanie o życie studenckie, wydarzenia na wydziale,
                                     lub poprosić o pomoc w sprawach związanych ze studiami.
