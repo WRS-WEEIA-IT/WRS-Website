@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import FacebookPost from '@/lib/interfaces/firebase/FacebookPost';
@@ -6,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatDistanceToNow, format, isToday, isYesterday, differenceInDays } from 'date-fns';
 import { pl } from 'date-fns/locale';
+import { useState } from 'react';
 
 export function formatPolishDate(date: Date) {
     const now = new Date();
@@ -23,7 +26,12 @@ export function formatPolishDate(date: Date) {
 }
 
 export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost) {
+    const [showImage, setShowImage] = useState(true);
     const date = new Date(timeCreated);
+
+    const handleImageError = () => {
+        setShowImage(false);
+    };
 
     return (
         <div className='rounded-lg border shadow-xl w-full'>
@@ -55,7 +63,7 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
                     ))}
                 </div>
             </div>
-            {imageUrl && (
+            {imageUrl && showImage && (
                 <div className='w-full'>
                     <Image
                         src={imageUrl}
@@ -64,13 +72,13 @@ export function FacebookCard({ imageUrl, link, timeCreated, text }: FacebookPost
                         height={450}
                         className='object-cover w-full h-full rounded-b-lg'
                         style={{ objectFit: 'cover' }}
+                        onError={handleImageError}
                     />
                 </div>
             )}
         </div>
     );
 }
-
 export function FacebookCardSkeleton() {
     return (
         <div className='rounded-lg border shadow-sm w-full'>
