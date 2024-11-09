@@ -37,7 +37,7 @@ export const infoCardRoutes: InfoCardProps[] = [
         isNewTab: true,
     },
     {
-        title: 'Kierunki',
+        title: 'Studia inżynierskie',
         description: 'Kierunki studiów na naszym wydziale wraz z opisami specjalizacji',
         color: 'red',
         Icon: DoorOpen,

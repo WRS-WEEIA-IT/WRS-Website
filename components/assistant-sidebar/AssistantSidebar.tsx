@@ -7,7 +7,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
-import { Badge } from './ui/badge';
+import { Badge } from '../ui/badge';
 
 type Message = {
     id: number;
@@ -15,7 +15,7 @@ type Message = {
     sender: 'user' | 'bot';
 };
 
-export function AppSidebar() {
+export function AssistantSidebar() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [inputMessage, setInputMessage] = useState('');
 
@@ -49,7 +49,7 @@ export function AppSidebar() {
     };
 
     return (
-        <Sidebar>
+        <Sidebar className=' bg-sidebar-primary'>
             <SidebarHeader className='flex flex-row border-b p-4'>
                 <h2 className='text-lg font-semibold tracking-tight'>Weejkuś</h2>
                 <Badge className='' variant={'outline'}>

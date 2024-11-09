@@ -1,7 +1,7 @@
 const InformationSection = () => {
     return (
         <div className='site-container'>
-            <div className='site-container py-12 flex flex-col gap-10'>
+            <div className='readable-width py-12 flex flex-col gap-10'>
                 <p>Cześć! Zatem chciałbyś dowiedzieć się kim jesteśmy? To świetnie! Już ci opisujemy:</p>
                 <div className='flex flex-col gap-4'>
                     <p className='text-2xl'>Kim jesteśmy? 👀</p>
