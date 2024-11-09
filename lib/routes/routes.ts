@@ -15,7 +15,7 @@ export const navbarRoutes: Route[] = [
         path: '/about-us',
     },
     {
-        title: 'Nasze wydarzenia',
+        title: 'Wydarzenia',
         path: '/events',
     },
 ];

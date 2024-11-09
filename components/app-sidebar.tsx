@@ -6,6 +6,8 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, Si
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import axios from 'axios';
+import { Badge } from './ui/badge';
 
 type Message = {
     id: number;
@@ -14,7 +16,7 @@ type Message = {
 };
 
 export function AppSidebar() {
-    const [messages, setMessages] = useState<Message[]>([{ id: 1, content: 'Hello! How can I help you today?', sender: 'bot' }]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [inputMessage, setInputMessage] = useState('');
 
     const handleSendMessage = () => {
@@ -27,22 +29,32 @@ export function AppSidebar() {
             setMessages([...messages, newMessage]);
             setInputMessage('');
 
-            // Simulate bot response
-            setTimeout(() => {
-                const botResponse: Message = {
-                    id: messages.length + 2,
-                    content: 'Thank you for your message. How else can I assist you?',
+            const getChatResponse = async () => {
+                const response = await axios.post('https://olekgolus-wrs-assistant.deno.dev/v1/assistant', {
+                    prompt: inputMessage,
+                });
+                const data = response.data;
+                return data;
+            };
+
+            getChatResponse().then((data) => {
+                const newMessage: Message = {
+                    id: messages.length + 1,
+                    content: data.answer,
                     sender: 'bot',
                 };
-                setMessages((prevMessages) => [...prevMessages, botResponse]);
-            }, 1000);
+                setMessages((prevMessages) => [...prevMessages, newMessage]);
+            });
         }
     };
 
     return (
         <Sidebar>
-            <SidebarHeader className='border-b p-4'>
-                <h2 className='text-lg font-semibold tracking-tight'>Chat</h2>
+            <SidebarHeader className='flex flex-row border-b p-4'>
+                <h2 className='text-lg font-semibold tracking-tight'>Weejkuś</h2>
+                <Badge className='' variant={'outline'}>
+                    Beta
+                </Badge>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
@@ -55,7 +67,7 @@ export function AppSidebar() {
                                 <div className={`flex  gap-2 max-w-[80%]`}>
                                     {message.sender == 'bot' && (
                                         <Avatar>
-                                            <AvatarImage src={'/bot-avatar.png'} alt={'Bot'} />
+                                            <AvatarImage src={'/wrs-assistant.jpg'} alt={'Bot'} />
                                             <AvatarFallback>{'Bot'}</AvatarFallback>
                                         </Avatar>
                                     )}

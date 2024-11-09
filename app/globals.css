@@ -90,4 +90,8 @@
     .text-hover {
         @apply hover:text-primary hover:drop-shadow-[0_0_25px_rgba(67,133,243,1)];
     }
+
+    .readable-width {
+        @apply max-w-screen-md mx-auto;
+    }
 }

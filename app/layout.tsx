@@ -52,17 +52,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <html lang='en'>
             <body className={GeistSans.className}>
-                <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
-                    <SidebarProvider>
+                <SidebarProvider>
+                    <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
                         <AppSidebar />
-                        <main>
-                            <SidebarTrigger />
+                        <main className='w-screen'>
                             <Navbar />
                             {children}
                             <Footer />
                         </main>
-                    </SidebarProvider>
-                </ThemeProvider>
+                    </ThemeProvider>
+                </SidebarProvider>
             </body>
         </html>
     );

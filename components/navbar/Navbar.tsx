@@ -11,6 +11,7 @@ import { Button } from '../ui/button';
 import { useEffect, useState } from 'react';
 import { navbarRoutes } from '@/lib/routes/routes';
 import { searchBarGroups } from '@/lib/routes/routes';
+import { SidebarTrigger } from '../ui/sidebar';
 
 const Navbar = () => {
     const currentPath = usePathname();
@@ -50,6 +51,9 @@ const Navbar = () => {
                 <SearchBar searchBarCategories={searchBarGroups} />
             </div>
             <ModeToggle />
+            <Button asChild variant='outline' size='icon'>
+                <SidebarTrigger />
+            </Button>
             {currentWidth < mdWidth && (
                 <nav>
                     <Sheet>
