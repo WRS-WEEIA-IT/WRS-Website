@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 const NewsSection = async () => {
     return (
         <section id='news' className='flex flex-col gap-6 site-container'>
-            <div className='flex flex-col gap-8 md:site-container'>
+            <div className='flex flex-col gap-8 readable-width'>
                 <div>
                     <FadeText
                         className='text-3xl font-semibold leading-none tracking-tight mb-3'
@@ -28,7 +28,7 @@ const NewsSection = async () => {
                     />
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-1 gap-8'>
+                <div className='grid grid-cols-1 gap-8'>
                     <Suspense fallback={<FacebookCardSkeleton />}>
                         <NewsFeed />
                     </Suspense>

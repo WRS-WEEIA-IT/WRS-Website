@@ -46,7 +46,7 @@ const NewsPage = () => {
                 </div>
             </div>
             <div className='news-page site-container mt-12'>
-                <div className='news-list md:site-container flex flex-col gap-8'>
+                <div className='news-list readable-width flex flex-col gap-8'>
                     {facebookPosts.map((post, index) => (
                         <FacebookCard key={index} {...post} />
                     ))}

@@ -20,7 +20,7 @@ export function FadeText({
     text,
 }: FadeTextProps) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref as any, { once: true });
 
     const directionOffset = useMemo(() => {
         const map = { up: 10, down: -10, left: -10, right: 10 };
@@ -51,7 +51,7 @@ export function FadeText({
 
     return (
         <motion.div ref={ref} initial='hidden' animate={isInView ? 'show' : 'hidden'} variants={FADE_ANIMATION_VARIANTS}>
-            <motion.span className={className}>{text}</motion.span>
+            <motion.span className={className as any}>{text}</motion.span>
         </motion.div>
     );
 }

@@ -4,6 +4,8 @@ import { ThemeProvider } from '@/components/ui/theme-provider';
 import Navbar from '@/components/navbar/Navbar';
 import { GeistSans } from 'geist/font/sans';
 import Footer from '@/components/footer/Footer';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { AssistantSidebar } from '@/components/assistant-sidebar/AssistantSidebar';
 
 export const metadata: Metadata = {
     title: 'WRS WEEIA',
@@ -46,14 +48,19 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <html lang='en'>
             <body className={GeistSans.className}>
-                <ThemeProvider attribute='class' defaultTheme='light' enableSystem disableTransitionOnChange>
-                    <Navbar />
-                    {children}
-                    <Footer />
+                <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
+                    <SidebarProvider defaultOpen={false}>
+                        <AssistantSidebar />
+                        <main className='w-screen'>
+                            <Navbar />
+                            {children}
+                            <Footer />
+                        </main>
+                    </SidebarProvider>
                 </ThemeProvider>
             </body>
         </html>
