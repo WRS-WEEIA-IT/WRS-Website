@@ -29,19 +29,44 @@ export function AssistantSidebar() {
             };
             setMessages((prev) => [...prev, userMessage]);
             setInputMessage('');
-            setIsLoading(true);
 
             try {
-                const response = await axios.post('https://olekgolus-wrs-assistant.deno.dev/v1/assistant', {
-                    prompt: inputMessage,
+                // Immediately set loading to preview Assistant Loading State
+                setIsLoading(true);
+                const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://localhost:3000/v1/assistant', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: inputMessage }),
                 });
+                const reader = response.body?.getReader();
+                const decoder = new TextDecoder();
+                while (reader) {
+                    // Set loading to preview Assistant Loading State
+                    setIsLoading(true);
 
-                const botMessage: Message = {
-                    id: messages.length + 2,
-                    content: response.data.answer,
-                    sender: 'bot',
-                };
-                setMessages((prev) => [...prev, botMessage]);
+                    const { value, done } = await reader.read();
+                    if (done) break;
+
+                    // Show empty bot message that will be further populated
+                    const botMessage: Message = { id: messages.length + 2, content: '', sender: 'bot' };
+                    setIsLoading(false);
+                    setMessages((prev) => [...prev, botMessage]);
+
+                    const chunk = decoder.decode(value, { stream: true });
+                    const parsedChunk = JSON.parse(chunk);
+                    const answer = parsedChunk?.answer;
+
+                    setMessages((prev) => {
+                        const updatedMessages = [...prev];
+                        updatedMessages[updatedMessages.length - 1].content = answer;
+                        return updatedMessages;
+                    });
+
+                    // Only question type requires additional message
+                    if (parsedChunk.questionType !== 'question') {
+                        break;
+                    }
+                }
             } catch (error) {
                 const errorMessage: Message = {
                     id: messages.length + 2,
@@ -82,9 +107,9 @@ export function AssistantSidebar() {
                                 </p>
                             </div>
                         ) : (
-                            messages.map((message) => (
+                            messages.map((message, index) => (
                                 <div
-                                    key={message.id}
+                                    key={index}
                                     className={`flex flex-col mb-4 ${message.sender === 'user' ? 'items-end' : 'items-start'}`}
                                 >
                                     <div
