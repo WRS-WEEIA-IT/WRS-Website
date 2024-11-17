@@ -29,15 +29,9 @@ export const CourseCard = ({ title, titleIcon, description, courseDescriptionLin
             </CardHeader>
             <CardContent>
                 <CardDescription>
-                    <div
-                        ref={contentRef}
-                        className='relative overflow-hidden transition-[max-height] duration-300 ease-in-out'
-                        style={{ maxHeight: height }}
-                    >
+                    <div ref={contentRef} className='relative overflow-hidden transition-[max-height] duration-300 ease-in-out' style={{ maxHeight: height }}>
                         <blockquote className='border-l-2 pl-6 italic'>{description}</blockquote>
-                        {!isExpanded && description.length > maxLength && (
-                            <div className='absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent' />
-                        )}
+                        {!isExpanded && description.length > maxLength && <div className='absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent' />}
                     </div>
                     {description.length > maxLength && (
                         <Button variant='ghost' size='sm' onClick={toggleExpand} className='mt-2 transition-all duration-300 ease-in-out'>
@@ -58,16 +52,12 @@ export const CourseCard = ({ title, titleIcon, description, courseDescriptionLin
                 </CardDescription>
             </CardContent>
             <CardFooter className='flex gap-4'>
-                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min`}>
-                    <Link href={courseDescriptionLink} target='_blank'>
-                        Pełny opis kierunku
-                    </Link>
-                </Button>
-                <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min`}>
-                    <Link href={coursePlanLink} target='_blank'>
-                        Szczegółowy plan studiów
-                    </Link>
-                </Button>
+                <Link href={courseDescriptionLink} target='_blank'>
+                    <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min w-full`}>Pełny opis kierunku</Button>
+                </Link>
+                <Link href={coursePlanLink} target='_blank'>
+                    <Button className={`bg-${buttonColor}-500 hover:bg-${buttonColor}-600 h-min w-full`}>Szczegółowy plan studiów</Button>
+                </Link>
             </CardFooter>
         </Card>
     );

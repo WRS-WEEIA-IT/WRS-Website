@@ -5,15 +5,13 @@ import { appDb } from './config/firebase';
 import FacebookPost from './interfaces/firebase/FacebookPost';
 import Course from './interfaces/firebase/Course';
 import Event from './interfaces/firebase/Event';
+import ManagementCard from './interfaces/firebase/ManagementCard';
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export async function getFacebookPosts(
-    lastDocument: DocumentData | null,
-    postsPerPage: number,
-): Promise<{ posts: FacebookPost[]; lastDoc: DocumentData }> {
+export async function getFacebookPosts(lastDocument: DocumentData | null, postsPerPage: number): Promise<{ posts: FacebookPost[]; lastDoc: DocumentData }> {
     const newsCollection = collection(appDb, 'news');
 
     const q = lastDocument
@@ -51,4 +49,11 @@ export const getEvents = async (): Promise<Event[]> => {
     const eventsSnapshot = await getDocs(eventsCollection);
     const eventsList = eventsSnapshot.docs.map((doc) => doc.data());
     return eventsList as Event[];
+};
+
+export const getManagement = async (): Promise<ManagementCard[]> => {
+    const managementCollection = collection(appDb, 'management');
+    const managementSnapshot = await getDocs(managementCollection);
+    const managementList = managementSnapshot.docs.map((doc) => doc.data());
+    return managementList as ManagementCard[];
 };
