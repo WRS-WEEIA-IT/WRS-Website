@@ -23,9 +23,7 @@ const JoinUsSection = () => {
                         , wydarzenie specjalnie przygotowane dla nowych WRSowiczów
                     </p>
                     <Separator orientation='vertical' className='justify-self-center md:mx-12 col-span-2' />
-                    <p className='flex-1 text-center text-sm col-span-5'>
-                        Ale nikt nie zabrania ci przyjść do nas na spotkanie i spróbować się wdrożyć samemu 😉
-                    </p>
+                    <p className='flex-1 text-center text-sm col-span-5'>Ale nikt nie zabrania ci przyjść do nas na spotkanie i spróbować się wdrożyć samemu 😉</p>
                 </div>
             </div>
         </div>

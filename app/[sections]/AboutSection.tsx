@@ -19,8 +19,7 @@ const AboutSection = () => {
                 />
                 <FadeText
                     className='text-lg text-center md:w-1/2'
-                    text='Jesteśmy grupą studentów, którzy postanowili połączyć siły i wspólnie działać na rzecz studentów Wydziału
-                    Elektrotechniki, Elektroniki, Informatyki i Automatyki.'
+                    text='Szukasz czegoś więcej? Jesteśmy grupą studentów, którzy wiedzą, że studia to nie tylko nauka.'
                     direction='left'
                     framerProps={{
                         show: { transition: { delay: 0.1 } },
@@ -28,7 +27,7 @@ const AboutSection = () => {
                 />
                 <FadeText
                     className='text-lg text-center md:w-1/2'
-                    text='Naszym celem jest wspieranie studentów w trakcie studiów, a także zapewnienie im rozrywki i możliwości rozwoju 🚀'
+                    text='Razem tworzymy przestrzeń, gdzie możesz rozwijać swoje pasje, poznać nowych ludzi i po prostu dobrze się bawić. Integracje, warsztaty, projekty - u nas zawsze coś się dzieje! 🚀'
                     direction='left'
                     framerProps={{
                         show: { transition: { delay: 0.1 } },
@@ -36,7 +35,7 @@ const AboutSection = () => {
                 />
                 <Link href='/about-us'>
                     <Button variant='outline' className='w-max text-foreground'>
-                        Dowiedz się więcej o nas 📖
+                        Dowiedz się więcej 📖
                     </Button>
                 </Link>
             </div>
